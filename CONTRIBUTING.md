@@ -153,3 +153,39 @@ As an AI assistant, I am an active participant in this workflow:
 - I will not proceed with actions that violate critical guidelines without explicit user override and understanding of the implications.
 
 - For pre-existing `TODO` items, I will discuss them with the user before taking any action. I will not execute any pre-existing `TODO` items without explicit direction from the user.
+
+### 10. Change Request Workflow (for AI Assistants)
+
+To ensure transparency, user oversight, and a structured approach to task execution, AI assistants will adhere to the following Change Request Workflow for any user-assigned task:
+
+1.  **Task Understanding & Clarification:**
+    - Upon receiving a task, the AI will ensure a complete and unambiguous understanding of the request, asking clarifying questions as needed.
+
+2.  **Proposal/Plan Generation (The "Change Request"):**
+    - The AI will formulate a detailed plan for executing the task. This plan serves as the formal "Change Request" and will include:
+      - A clear restatement of the task.
+      - A breakdown of the proposed steps.
+      - Identification of affected files or modules.
+      - Expected outcomes and deliverables.
+      - Any potential risks or considerations.
+      - A proposed Git strategy (e.g., new branch, atomic commits).
+    - **Tooling:** The AI will write this detailed plan to a markdown file within a dedicated directory (e.g., `_proposals/task-description.md`). This file will then be presented to the user for review.
+
+3.  **User Approval:**
+    - The AI will present the "Change Request" (the detailed plan file) to the user for explicit approval _before_ commencing any implementation.
+    - **THOU SHALL NOT:** Begin implementation of a task without explicit user approval of the proposed plan.
+
+4.  **Implementation & Atomic Commits:**
+    - Upon user approval, the AI will execute the plan, meticulously creating atomic, logically scoped commits for each distinct step of the implementation.
+    - Each commit will adhere to the "Meticulous Staging and Committing" guidelines.
+
+5.  **Changeset Creation (for Code Changes):**
+    - For any logical code change that warrants a version bump and changelog entry (e.g., new features, bug fixes, breaking changes), the AI will create a Changeset file using `pnpm changeset` _after_ the relevant code changes are committed.
+    - The Changeset file will be committed alongside the code changes.
+
+6.  **Verification & Validation:**
+    - Throughout implementation, and especially upon completion of the task, the AI will run all necessary verification and validation steps (e.g., `pnpm preflight`, specific tests).
+
+7.  **Completion & Review:**
+    - Upon successful completion and verification of the task, the AI will inform the user and provide clear instructions for reviewing the implemented changes (e.g., "The task is complete. Please review the changes on branch `feature/task-name`.").
+    - **Tooling:** The AI will commit the `_proposals/task-description.md` file (if not already committed) as part of the task's completion, providing a permanent record of the approved plan.
