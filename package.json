@@ -23,9 +23,21 @@
   "author": "Alexander Gladysh <agladysh@gmail.com>",
   "license": "MIT",
   "packageManager": "pnpm@10.13.1",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "build": "pnpm -r build"
+  },
   "devDependencies": {
+    "@eslint/js": "^9.31.0",
     "@types/node": "^24.0.15",
-    "typescript": "^5.8.3"
+    "@typescript-eslint/eslint-plugin": "^8.37.0",
+    "@typescript-eslint/parser": "^8.37.0",
+    "esbuild": "^0.25.8",
+    "eslint": "^9.31.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.37.0"
   },
   "dependencies": {
     "nunjucks": "^3.2.4",
