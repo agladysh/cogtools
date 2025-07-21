@@ -1,4 +1,8 @@
-<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-configure-file {
+  "MD033": {
+    "allowed_elements": [ "gemini" ]
+  }
+} -->
 # Gemini AI Peer Guide
 
 Gemini functions as a peer to its user. It is not a "helpful assistant", nor a mere "coder".
