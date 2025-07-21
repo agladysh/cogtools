@@ -60,29 +60,29 @@ To effectively manage changes and avoid common pitfalls, it is crucial to have a
 
 To ensure that every commit is atomic, logically coherent, and accurately reflects your intended changes, follow these steps rigorously:
 
-1.  **Perform the Logical Change:** Make your code modifications, add new files, or delete existing ones. Focus on completing a single, well-defined task.
+1. **Perform the Logical Change:** Make your code modifications, add new files, or delete existing ones. Focus on completing a single, well-defined task.
 
-2.  **Address Side Effects (Pre-Staging):** Before staging your primary changes, handle any side effects that might have occurred:
+2. **Address Side Effects (Pre-Staging):** Before staging your primary changes, handle any side effects that might have occurred:
     - **Formatting:** If your changes might introduce formatting discrepancies, run `pnpm format:fix`. This will apply Prettier's formatting rules to all relevant files.
     - **Dependency Updates (`pnpm-lock.yaml`):** If your work involved adding, removing, or updating dependencies (e.g., via `pnpm add`, `pnpm remove`, `pnpm update`), run `pnpm install`. This ensures `pnpm-lock.yaml` is up-to-date.
 
-3.  **Review Working Directory Status:** Use `git status` to get a clear overview of all changes in your working directory. This command will show:
+3. **Review Working Directory Status:** Use `git status` to get a clear overview of all changes in your working directory. This command will show:
     - Changes to be committed (already in the staging area).
     - Changes not staged for commit (modified tracked files in the working directory).
     - Untracked files (new files in the working directory).
 
-4.  **Stage Only Related Changes:**
+4. **Stage Only Related Changes:**
     - **Explicit Staging:** Use `git add <file>` for each specific file or directory that belongs to the _current logical change_. Avoid `git add .` unless you are absolutely certain that _all_ modified and untracked files in the current directory belong to this single commit.
     - **Review Staged Diff (Mandatory):** Before committing, it is **imperative** to review exactly what is in your staging area. Use `git diff --staged` to inspect the changes that will be included in the next commit.
       - If `git diff --staged` shows unexpected changes (e.g., formatting changes that should be a separate commit, or changes from a different logical task), use `git restore --staged <file>` to unstage them.
       - If `git diff --staged` shows nothing, but `git status` indicates modified files, it means those changes are in your working directory but not yet staged. Use `git add <file>` to stage them.
 
-5.  **Commit Atomically:**
+5. **Commit Atomically:**
     - **Single, Logical Change:** Each commit must represent a single, well-defined, and logically independent change.
     - **Atomic Commit Command:** Prefer `git commit <files> -m "Your message"` for specific staged files, or `git commit -a -m "Your message"` for all tracked and modified files (use with extreme caution, only when `git status` shows _only_ the intended changes).
     - **Avoid `git add` then `git commit` as separate steps:** This sequence is a common pitfall. If the `git commit` fails (e.g., due to a pre-commit hook), the changes remain staged, leading to confusion and potential bundling of unrelated changes in subsequent attempts. Always ensure staging and committing are part of a robust, single-step process, or use `git commit -a` if appropriate.
 
-6.  **Post-Commit Verification:**
+6. **Post-Commit Verification:**
     - After a commit, immediately run `git status` to confirm that the working directory is clean or contains only expected changes for the _next_ logical task.
     - For critical operations (e.g., re-applying history), perform a `git diff HEAD <original_commit_hash>` to ensure no information loss.
 
@@ -107,9 +107,9 @@ We use Changesets to manage versioning and changelogs across our monorepo.
 
 - **Creating a Changeset:** When you complete a logical change (feature, fix, chore), run `pnpm changeset` (or `npx changeset`) to create a new changeset file. This file describes the change, its impact (major, minor, patch), and which packages it affects.
 - **Versioning and Publishing:** The release process involves:
-  1.  Running `pnpm changeset version` to apply version bumps and update changelogs based on all accumulated changeset files.
-  2.  Committing these version and changelog changes.
-  3.  Running `pnpm changeset publish` to publish the updated packages.
+  1. Running `pnpm changeset version` to apply version bumps and update changelogs based on all accumulated changeset files.
+  2. Committing these version and changelog changes.
+  3. Running `pnpm changeset publish` to publish the updated packages.
 
 ### 6. Commit Message Guidelines (Commitlint)
 
@@ -158,10 +158,10 @@ As an AI assistant, I am an active participant in this workflow:
 
 To ensure transparency, user oversight, and a structured approach to task execution, AI assistants will adhere to the following Change Request Workflow for any user-assigned task:
 
-1.  **Task Understanding & Clarification:**
+1. **Task Understanding & Clarification:**
     - Upon receiving a task, the AI will ensure a complete and unambiguous understanding of the request, asking clarifying questions as needed.
 
-2.  **Proposal/Plan Generation (The "Change Request"):**
+2. **Proposal/Plan Generation (The "Change Request"):**
     - The AI will formulate a detailed plan for executing the task. This plan serves as the formal "Change Request" and will include:
       - A clear restatement of the task.
       - A breakdown of the proposed steps.
@@ -169,23 +169,23 @@ To ensure transparency, user oversight, and a structured approach to task execut
       - Expected outcomes and deliverables.
       - Any potential risks or considerations.
       - A proposed Git strategy (e.g., new branch, atomic commits).
-    - **Tooling:** The AI will write this detailed plan to a markdown file within a dedicated directory (e.g., `_proposals/task-description.md`). This file will then be presented to the user for review.
+    - The AI will write this detailed plan to a markdown file within a dedicated subdirectory (e.g., `docs/proposals/0001-task-description/proposal.md`), following a sequential naming convention for the subdirectory. This file will then be presented to the user for review.
 
-3.  **User Approval:**
+3. **User Approval:**
     - The AI will present the "Change Request" (the detailed plan file) to the user for explicit approval _before_ commencing any implementation.
     - **THOU SHALL NOT:** Begin implementation of a task without explicit user approval of the proposed plan.
 
-4.  **Implementation & Atomic Commits:**
+4. **Implementation & Atomic Commits:**
     - Upon user approval, the AI will execute the plan, meticulously creating atomic, logically scoped commits for each distinct step of the implementation.
     - Each commit will adhere to the "Meticulous Staging and Committing" guidelines.
 
-5.  **Changeset Creation (for Code Changes):**
+5. **Changeset Creation (for Code Changes):**
     - For any logical code change that warrants a version bump and changelog entry (e.g., new features, bug fixes, breaking changes), the AI will create a Changeset file using `pnpm changeset` _after_ the relevant code changes are committed.
     - The Changeset file will be committed alongside the code changes.
 
-6.  **Verification & Validation:**
+6. **Verification & Validation:**
     - Throughout implementation, and especially upon completion of the task, the AI will run all necessary verification and validation steps (e.g., `pnpm preflight`, specific tests).
 
-7.  **Completion & Review:**
+7. **Completion & Review:**
     - Upon successful completion and verification of the task, the AI will inform the user and provide clear instructions for reviewing the implemented changes (e.g., "The task is complete. Please review the changes on branch `feature/task-name`.").
-    - **Tooling:** The AI will commit the `_proposals/task-description.md` file (if not already committed) as part of the task's completion, providing a permanent record of the approved plan.
+    - TODO: proposal's corresponding `report.md` file with status (including catastrophic failure), analysis, journal of activities and recommendations.
