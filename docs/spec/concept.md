@@ -2,6 +2,8 @@
 
 ## Declarative Tool
 
+This is a normative example.
+
 ```yaml
 $schema: schema:agladysh-research.org,2025/gemini-cli-cogtools:tool
 
@@ -90,7 +92,25 @@ implementation: | # njk
   {% endif %}
 ```
 
-## Setup
+TODO: Unpack schema etc. Note parameters are Open API 3.0 (as per Gemini CLI requirements), with some YAML-sugar on top. Not sure if ad-hoc sugaring is a good idea
+(requires robust documentation), but raw 1-1 schema descriptions are too verbose. Consult applicable documentation rigrously.
+
+## Utilities
+
+* `gemini-cli-cogtools` is an npx-compatible porcelain utility (perhaps to be renamed to `cogtools` if the name is generally available)
+* `gemini-cli-cogtools-discover` is a tool discovery plumbing utility for Gemini CLI (if we will rename, then it would be `cogtools-discover`)
+* `gemini-cli-cogtools-call` is a tool calling plumbing utility for Gemini CLI (`cogtools-call`)
+
+Thus, `.gemini/settings.json` would look something like this:
+
+```json
+{
+  "toolDiscoveryCommand": "gemini-cli-cogtools-discover",
+  "toolCallCommand": "gemini-cli-cogtools-call",
+}
+```
+
+### Setup
 
 TODO: Ideally should be something like the following:
 
