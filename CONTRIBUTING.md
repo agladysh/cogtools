@@ -11,4 +11,6 @@ If you find any discrepancies with your expectations, do NOT fix immediately: di
 
 ### Hard Rules
 
-* **THOU SHALL NOT** generate `package.json` dependencies directly. Use `pnpm`.
+* **THOU SHALL NOT** generate `package.json` dependencies directly. This creates versioning chaos. Use `pnpm` instead.
+* **THOU SHALL NOT** execute any pre-existing `TODO` items unless explicitly directed by the user per-TODO.
+  Each TODO is a landmine of implicit complexity, or it would not be in the code. Discuss instead.
