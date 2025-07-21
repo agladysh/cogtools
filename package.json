@@ -1,0 +1,13 @@
+{
+  "name": "gemini-cli-cogtools",
+  "version": "1.0.0",
+  "description": "Cognitive Tooling Scaffolding for Gemini CLI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [ "gemini", "gemini-cli", "ai", "metacognition" ],
+  "author": "Alexander Gladysh <agladysh@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@10.13.1"
+}
