@@ -64,23 +64,48 @@ If `package.json` files are inadvertently modified directly, the following proce
 
 ### Understanding Git State (for AI Assistants)
 
-To effectively manage changes, it is crucial to have a precise understanding of Git's three main states:
+To effectively manage changes and avoid common pitfalls, it is crucial to have a precise and actionable understanding of Git's core states and how commands interact with them.
 
-- **Working Directory:** This is where you make changes to files. Files here are either tracked (Git knows about them) or untracked (Git doesn't know about them yet).
-- **Staging Area (Index):** This is an intermediate area where you prepare changes for your next commit. When you `git add` a file, you're adding its current state from the working directory to the staging area.
-- **HEAD:** This refers to the snapshot of your last commit. When you commit, Git creates a new snapshot from the staging area and moves HEAD to point to it.
+- **Working Directory:** This is the actual set of files and directories on your local filesystem. When you edit a file, the changes are initially only in your working directory.
+  - **Tracked Files:** Files that Git is aware of and has in its history.
+  - **Untracked Files:** New files that Git does not yet know about.
+- **Staging Area (Index):** This is a temporary snapshot of changes that you intend to include in your _next_ commit. It acts as a buffer between your working directory and your repository history.
+  - When you run `git add <file>`, Git takes the current state of `<file>` from your working directory and places it into the staging area.
+  - The staging area allows you to build up a commit incrementally, selecting specific changes from different files.
+- **HEAD:** This is a pointer to the snapshot of your _last_ commit in the current branch. It represents the current state of your repository's history.
+  - When you create a new commit, Git takes the contents of the staging area, creates a new commit object, and moves HEAD to point to this new commit.
 
-**Key Principle:** A commit records the changes that are _in the staging area_, not necessarily all changes in your working directory.
+**Key Principle:** A commit records the changes that are _in the staging area_, not necessarily all changes in your working directory. Changes in the working directory that are not staged will _not_ be included in the next commit.
 
 ### Meticulous Staging and Committing
 
-To ensure logical and atomic commits, especially when interacting with automated tools:
+To ensure that every commit is atomic, logically coherent, and accurately reflects your intended changes, follow these steps rigorously:
 
-- **Always Review Staged Changes:** Before every commit, it is imperative to review exactly what is in your staging area. Use `git diff --staged` to inspect the changes that will be included in the next commit.
-  - If `git diff --staged` shows unexpected changes, use `git restore --staged <file>` or `git restore --staged .` to unstage them.
-  - If `git diff --staged` shows nothing, but `git status` indicates modified files, it means those changes are in your working directory but not yet staged. Use `git add <file>` to stage them.
-- **Commit Only Related Changes:** Group only logically related modifications into a single commit. If you have changes for a feature, a formatting fix, and a dependency update, these should ideally be three separate commits.
-- **Atomic Commit Operations:** Continue to prefer `git commit -a -m "..."` for tracked files or `git commit <files> -m "..."` for specific files. Avoid the `git add` then `git commit` sequence unless you are meticulously curating staged changes with `git add -p`.
+1.  **Perform the Logical Change:** Make your code modifications, add new files, or delete existing ones. Focus on completing a single, well-defined task.
+
+2.  **Address Side Effects (Pre-Staging):** Before staging your primary changes, handle any side effects that might have occurred:
+    - **Formatting:** If your changes might introduce formatting discrepancies, run `pnpm format:fix`. This will apply Prettier's formatting rules to all relevant files.
+    - **Dependency Updates (`pnpm-lock.yaml`):** If your work involved adding, removing, or updating dependencies (e.g., via `pnpm add`, `pnpm remove`, `pnpm update`), run `pnpm install`. This ensures `pnpm-lock.yaml` is up-to-date.
+
+3.  **Review Working Directory Status:** Use `git status` to get a clear overview of all changes in your working directory. This command will show:
+    - Changes to be committed (already in the staging area).
+    - Changes not staged for commit (modified tracked files in the working directory).
+    - Untracked files (new files in the working directory).
+
+4.  **Stage Only Related Changes:**
+    - **Explicit Staging:** Use `git add <file>` for each specific file or directory that belongs to the _current logical change_. Avoid `git add .` unless you are absolutely certain that _all_ modified and untracked files in the current directory belong to this single commit.
+    - **Review Staged Diff (Mandatory):** Before committing, it is **imperative** to review exactly what is in your staging area. Use `git diff --staged` to inspect the changes that will be included in the next commit.
+      - If `git diff --staged` shows unexpected changes (e.g., formatting changes that should be a separate commit, or changes from a different logical task), use `git restore --staged <file>` to unstage them.
+      - If `git diff --staged` shows nothing, but `git status` indicates modified files, it means those changes are in your working directory but not yet staged. Use `git add <file>` to stage them.
+
+5.  **Commit Atomically:**
+    - **Single, Logical Change:** Each commit must represent a single, well-defined, and logically independent change.
+    - **Atomic Commit Command:** Prefer `git commit <files> -m "Your message"` for specific staged files, or `git commit -a -m "Your message"` for all tracked and modified files (use with extreme caution, only when `git status` shows _only_ the intended changes).
+    - **Avoid `git add` then `git commit` as separate steps:** This sequence is a common pitfall. If the `git commit` fails (e.g., due to a pre-commit hook), the changes remain staged, leading to confusion and potential bundling of unrelated changes in subsequent attempts. Always ensure staging and committing are part of a robust, single-step process, or use `git commit -a` if appropriate.
+
+6.  **Post-Commit Verification:**
+    - After a commit, immediately run `git status` to confirm that the working directory is clean or contains only expected changes for the _next_ logical task.
+    - For critical operations (e.g., re-applying history), perform a `git diff HEAD <original_commit_hash>` to ensure no information loss.
 
 ### Interacting with Pre-Commit Hooks (Husky)
 
