@@ -51,11 +51,31 @@ heavily relying on `gemini-cli-cogtools` implementation, and published on GitHub
 
 ### Composable GEMINI.md
 
-To implement the above NB, we need to generate GEMINI.md. Ideally it would be a template. Several ways we can hook that (or maybe it is not even needed), need to look into it deeper.
+To implement the above NB, we need to generate `GEMINI.md`. Ideally it would be a template. Several ways we can hook that (or maybe it is not even needed), need to look into it deeper.
+
+#### Known Context Window Engineering Issues
+
+NB: Might be not issues with `GEMINI.md`, but our mis-use of the Gemini CLI, we need to study the docs further:
+
+- Links are not loaded in the context. `[File](file)` should load.
+- Existing @filename loader only supports .md files, AND relies on non-robust syntax (e.g. `Read this file: @file.` would try to load `file.`).
+- No known way of loading files by glob.
+
+In general, we prefer to tightly control system message and prompting for the LLM. Gemini CLI prompt templates are currently baked in the source code,
+are largely not configurable, and are not even
 
 ### Managed `.gemini/` Directory
 
-One of the options to implement what we're up to is to completely manage .gemini directory with our set of utilities.
+One of the options to implement what we're up to is to completely manage the `.gemini` directory with our set of utilities.
+
+This would be not a very desirable outcome --- it exceedingly tightly bounds our utility to Gemini CLI. We shall see if we can work around the limitations
+and/or get the Gemini CLI developers to accept and publish our potential contributions within reasonable time window.
+
+### Known Issues with Gemini CLI Environment
+
+TODO: This is getting out of scope for the roadmap. Move elsewhere during spring cleanup.
+
+- `WriteFile` and related tools are severely broken wrt escaping. They perform dumb syntax-unaware unescapes, often breaking Gemini's tool use and confusing it to no end.
 
 ## Concept
 
