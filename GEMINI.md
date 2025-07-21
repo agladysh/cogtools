@@ -62,6 +62,7 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
       - [package.json](package.json)
 
     - Source Code
+
       - Perform similar reads in the [packages/](packages/) directory.
 
 2. Mercilessly update the Post On-Boarding Dump below, considering current text obsolete.
