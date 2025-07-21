@@ -32,9 +32,15 @@
     "typecheck": "tsc --noEmit",
     "preflight": "pnpm format:fix && pnpm typecheck && pnpm lint && pnpm build && pnpm test",
     "precommit": "pnpm format:check && pnpm typecheck && pnpm lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.5",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.31.0",
     "@types/node": "^24.0.15",
     "@typescript-eslint/eslint-plugin": "^8.37.0",
