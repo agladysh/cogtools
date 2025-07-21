@@ -1,5 +1,7 @@
 # Proposal 0002: Build System Re-evaluation and Refined Strategy
 
+- Proposal Status: Approved, not implemented
+
 ## Task Description
 
 This proposal outlines a revised strategy for the project's build system, informed by the skeptical constraint discovery conducted in the accompanying research log. The previous attempt (Proposal 0001) and initial investigation into `tsc -b` revealed complexities with project references and emission requirements that are not necessary to achieve the core objective.
