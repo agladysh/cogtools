@@ -20,6 +20,7 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "harrydowning.yaml-embedded-languages"
     ];
 
     # Enable previews
