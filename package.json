@@ -1,8 +1,8 @@
 {
-  "//TODO": "Organize entries",
-  "name": "@agladysh/gemini-cli-cogtools",
+  "// TODO": "Organize entries",
+  "name": "@agladysh/cogtools",
   "version": "1.0.0",
-  "description": "Metacognitive Tooling Scaffolding for Gemini CLI",
+  "description": "Metacognitive Tooling Scaffolding for AI Agents",
   "engines": {
     "node": ">=20.0.0"
   },
@@ -10,10 +10,11 @@
   "private": "true",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/agladysh/gemini-cli-tools.git"
+    "url": "git+https://github.com/agladysh/cogtools.git"
   },
   "keywords": [
-    "//TODO: Move to the main package",
+    "// TODO: Move to the main package",
+    "// TODO: Arbitrary. Write from scratch to be useful for cross-discovery",
     "gemini",
     "gemini-cli",
     "ai",

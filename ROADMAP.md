@@ -47,7 +47,7 @@ Observe complexity, esp. wrt objective analysis and decision-making. Externalizi
 
 > [!NB]
 > Ideally this would be encoded as a standalone "metacortex" (a mix of external tooling and cognitive tools) for TypeScript projects for Gemini CLI,
-heavily relying on `gemini-cli-cogtools` implementation, and published on GitHub as a separate project.
+heavily relying on `cogtools` implementation, and published on GitHub as a separate project.
 
 ### AI Teamwork
 

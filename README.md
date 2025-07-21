@@ -1,9 +1,10 @@
-# Metacognitive Tooling Scaffolding for Gemini CLI
+# Metacognitive Tooling Scaffolding for AI Agents
 
-The `@agladysh/gemini-cli-cogtools` utility provides a declarative way to provide metacognitive tools for Gemini
-in the [Gemini CLI](https://github.com/google-gemini/gemini-cli) environment.
+The `@agladysh/cogtools` utility provides a declarative way to provide metacognitive tools for AI agents.
 
 Metacognitive tools provide pre-made thought-forms for an AI, guiding and shaping is cognition.
+
+Initial scope is Gemini in the [Gemini CLI](https://github.com/google-gemini/gemini-cli) environment.
 
 The same approach should work in other environments, supporting `.gemini` directories, for example,
 in the [Gemini Code Assist](https://codeassist.google/).
@@ -32,7 +33,7 @@ Users also may set up semi-rudimentary
 > TODO: Provide instructions for other package managers.
 
 ```shell
-pnpm install -g @agladysh/gemini-cli-cogtools
+pnpm install -g @agladysh/cogtools
 ```
 
 TODO: Document `pnpx` use (provided it is meaningful).

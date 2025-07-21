@@ -1,11 +1,24 @@
+---
+Author: Alexander Gladysh <agladysh@gmail.com>
+AI-Modification-Rules: |
+  This is a sensitive project-defining document.
+  Be conservative.
+  Any modifications of this file require User review.
+  Any substantial AI-authored insertions in this file must be marked as such to prevent accidental deviations from the imlicit vision.
+---
+<!-- markdownlint-configure-file {
+  "MD033": {
+    "allowed_elements": [ "gemini" ]
+  }
+} -->
 # Initial Conceptual Documentation
 
-## Declarative Tool
+## Declarative Tool Definition
 
 This is a normative example.
 
 ```yaml
-$schema: schema:agladysh-research.org,2025/gemini-cli-cogtools:tool
+$schema: schema:agladysh-research.org,2025/cogtools:tool
 
 name: facepalm
 
@@ -97,26 +110,30 @@ TODO: Unpack schema etc. Note parameters are Open API 3.0 (as per Gemini CLI req
 
 ## Utilities
 
-* `gemini-cli-cogtools` is an npx-compatible porcelain utility (perhaps to be renamed to `cogtools` if the name is generally available)
-* `gemini-cli-cogtools-discover` is a tool discovery plumbing utility for Gemini CLI (if we will rename, then it would be `cogtools-discover`)
-* `gemini-cli-cogtools-call` is a tool calling plumbing utility for Gemini CLI (`cogtools-call`)
+* `cogtools` is an npx-compatible porcelain utility
+* `cogtools-discover` is a tool discovery plumbing utility following the implicit Gemini CLI shell protocol
+* `cogtools-call` is a tool calling plumbing utility for Gemini CLI following the implicit Gemini CLI shell protocol
 
 Thus, `.gemini/settings.json` would look something like this:
 
 ```json
 {
-  "toolDiscoveryCommand": "gemini-cli-cogtools-discover",
-  "toolCallCommand": "gemini-cli-cogtools-call",
+  "toolDiscoveryCommand": "cogtools-discover",
+  "toolCallCommand": "cogtools-call",
 }
 ```
+
+TODO: Explicitly document the implicit Gemini CLI protocol we follow in a separate spec, so it is generally reusable. Refer to the Gemini CLI docs.
 
 ### Setup
 
 TODO: Ideally should be something like the following:
 
-`gemini-cli-cogtools init` will interactively create initial configuration files.
+`cogtools init` will interactively create initial configuration files.
 
-`gemini-cli-cogtools config` lets you interactively change the configuration.
+`cogtools config` lets you interactively change the configuration.
+
+However, interactive mode is a third-tier priority.
 
 ## Temporary Notes
 

@@ -35,16 +35,23 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 
 Read the following files:
 
-* Documentation
+* User-facing Documentation
   * [README](README.md)
+
+* Product Documentation
   * [Concept](docs/spec/concept.md)
+
+* Development Documentation
   * [Contribution Guidelines](CONTRIBUTING.md)
 
-* Implicit Coding Style
+* Implicit Coding Style Guidelines
   * [.editorconfig](.editorconfig)
+  * [.prettierrc.json](.prettierrc.json)
 
-* Configuration
+* Project Configuration
+  * [.npmrc](.npmrc)
+  * [pnpm-workspace.yaml](pnpm-workspace.yaml)
   * [package.json](package.json)
 
 * Source Code
-  * TODO: None yet
+  * Perform similar reads in the [packages/](packages/) directory.
