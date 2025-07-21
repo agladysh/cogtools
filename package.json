@@ -6,8 +6,19 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [ "gemini", "gemini-cli", "ai", "metacognition" ],
+  "keywords": [
+    "gemini",
+    "gemini-cli",
+    "ai",
+    "metacognition"
+  ],
   "author": "Alexander Gladysh <agladysh@gmail.com>",
   "license": "MIT",
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.13.1",
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "nunjucks": "^3.2.4"
+  }
 }
