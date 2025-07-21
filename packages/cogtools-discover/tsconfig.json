@@ -2,18 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "lib": [ "ES2020" ],
+    "lib": ["ES2020"]
   },
-  "include": [
-    "index.ts",
-    "src/**/*.ts",
-    "src/**/*.json",
-    "./package.json"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "src/**/*.test.ts",
-  ],
+  "include": ["index.ts", "src/**/*.ts", "src/**/*.json", "./package.json"],
+  "exclude": ["node_modules", "dist", "src/**/*.test.ts"]
   // "references": [{ "path": "../core" }]
 }
