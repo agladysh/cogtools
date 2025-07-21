@@ -8,11 +8,12 @@
     "cogtools-discover": "./dist/index.js"
   },
   "scripts": {
-    "build": "node ../../scripts/build.mjs index.ts dist/index.js",
-    "test": "vitest"
+    "build": "node ../../scripts/build.mjs index.ts dist/index.js"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
   },
   "dependencies": {
-    "@cogtools/lib": "workspace:^1.0.0"
-  },
-  "devDependencies": {}
+    "@cogtools/lib": "workspace:*"
+  }
 }
