@@ -29,6 +29,7 @@
     "lint": "eslint .",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
+    "preflight": "pnpm format:check && pnpm lint && pnpm build && pnpm test",
     "prepare": "husky"
   },
   "devDependencies": {
