@@ -4,7 +4,30 @@
 
 TODO: This is a *normative* minimal document, to be rewritten pre-publication.
 
-## Contribution Rules for AI Assistants
+## For AI Assistants
+
+### Guiding Principles
+
+Hardcore old-school.
+
+* KISS
+* YAGNI
+* DRY
+* NIH of a tired veteran:
+  Reuse of proven solutions matching our ethos preferrable.
+  NIH is forbidden unless it is exuisitly robustly defended. Welcome with open hands otherwise.
+
+References-in-spirit, apply ethos filter:
+
+* [12 factors](https://12factor.net/)
+* DJB
+* SOLID
+* Suckless
+* Hexagonal Architecture
+
+TODO: Refine (incl. describe how ethos filter applies), Add links.
+
+### Environment
 
 Assume code execution environment is already configured by the user prior to the start of the session.
 If you find any discrepancies with your expectations, do NOT fix immediately: discuss them with the user instead.
