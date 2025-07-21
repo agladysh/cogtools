@@ -47,3 +47,5 @@ If `package.json` files are inadvertently modified directly, the following proce
 
 - **THOU SHALL NOT** execute any pre-existing `TODO` items unless explicitly directed by the user per-TODO.
   Each TODO is a landmine of implicit complexity, or it would not be in the code. Discuss instead.
+- **THOU SHALL NOT** create Git commits with an unreasonable scope. Each commit should represent a single, logical change.
+- **THOU SHALL NOT** use `git add <file>...` followed by `git commit`. This sequence is prone to errors if the commit fails (e.g., due to a pre-commit hook), as changes might remain staged without immediate notification. Instead, prefer atomic operations like `git commit -a -m "..."` (for tracked files) or ensure that staging and committing are part of a robust, single-step process.
