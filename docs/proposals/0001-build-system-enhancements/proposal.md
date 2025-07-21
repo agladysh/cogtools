@@ -1,6 +1,6 @@
 # Change Request: Build System Enhancements
 
-* Proposal Status: [Catastrophic Failure](report.md)
+- Proposal Status: [Catastrophic Failure](report.md)
 
 ## Task Understanding
 

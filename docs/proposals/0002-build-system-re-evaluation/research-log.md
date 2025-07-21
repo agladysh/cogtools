@@ -4,9 +4,9 @@ This log documents the experiments, observations, and analysis conducted during 
 
 ## Initial Setup and Documentation Review (2025-07-21)
 
-*   Created the directory `docs/proposals/0002-build-system-re-evaluation/`.
-*   Moved the proposal content to `docs/proposals/0002-build-system-re-evaluation/proposal.md`.
-*   Created the initial structure for the research log.
+- Created the directory `docs/proposals/0002-build-system-re-evaluation/`.
+- Moved the proposal content to `docs/proposals/0002-build-system-re-evaluation/proposal.md`.
+- Created the initial structure for the research log.
 
 **Documentation Review Process:**
 
@@ -14,37 +14,37 @@ Began reviewing official documentation for TypeScript Project References (`compo
 
 Consulted the following documentation pages:
 
-*   TypeScript Handbook: Project References (https://www.typescriptlang.org/docs/handbook/project-references.html)
-*   TypeScript Handbook: Compiler Options (https://www.typescriptlang.org/docs/handbook/compiler-options.html) - focusing on `composite`, `declaration`, `emitDeclarationOnly`, `noEmit`, `outDir`, `rootDir`.
-*   TypeScript Handbook: Module Resolution (https://www.typescriptlang.org/docs/handbook/module-resolution.html) - focusing on `paths`, `baseUrl`, `moduleResolution`.
-*   pnpm Documentation: Workspaces (https://pnpm.io/workspaces)
+- TypeScript Handbook: Project References (https://www.typescriptlang.org/docs/handbook/project-references.html)
+- TypeScript Handbook: Compiler Options (https://www.typescriptlang.org/docs/handbook/compiler-options.html) - focusing on `composite`, `declaration`, `emitDeclarationOnly`, `noEmit`, `outDir`, `rootDir`.
+- TypeScript Handbook: Module Resolution (https://www.typescriptlang.org/docs/handbook/module-resolution.html) - focusing on `paths`, `baseUrl`, `moduleResolution`.
+- pnpm Documentation: Workspaces (https://pnpm.io/workspaces)
 
 **Key Findings from Documentation Review:**
 
-*   **TypeScript Project References and `composite`:**
-    *   `composite: true` is fundamental for project references and signals a project's inclusion in a larger build. It enables features like faster incremental builds and cross-project type-checking.
-    *   A critical finding is that projects with `composite: true` **are required to emit `.d.ts` files**. The documentation explicitly states this. This explains the `TS6310` error in Proposal 0001, as `composite: true` and `noEmit: true` are incompatible in the same `tsconfig.json`.
-    *   `tsc -b` is the command used to build projects with references, processing them in dependency order.
+- **TypeScript Project References and `composite`:**
+  - `composite: true` is fundamental for project references and signals a project's inclusion in a larger build. It enables features like faster incremental builds and cross-project type-checking.
+  - A critical finding is that projects with `composite: true` **are required to emit `.d.ts` files**. The documentation explicitly states this. This explains the `TS6310` error in Proposal 0001, as `composite: true` and `noEmit: true` are incompatible in the same `tsconfig.json`.
+  - `tsc -b` is the command used to build projects with references, processing them in dependency order.
 
-*   **Declaration Files (`declaration`, `emitDeclarationOnly`):**
-    *   `declaration: true` generates `.d.ts` files alongside JavaScript output.
-    *   `emitDeclarationOnly: true` generates *only* `.d.ts` files, which is relevant when another tool handles JavaScript bundling but type information is still needed.
+- **Declaration Files (`declaration`, `emitDeclarationOnly`):**
+  - `declaration: true` generates `.d.ts` files alongside JavaScript output.
+  - `emitDeclarationOnly: true` generates _only_ `.d.ts` files, which is relevant when another tool handles JavaScript bundling but type information is still needed.
 
-*   **`noEmit`:**
-    *   `noEmit: true` prevents all output emission. It is incompatible with `composite: true`.
+- **`noEmit`:**
+  - `noEmit: true` prevents all output emission. It is incompatible with `composite: true`.
 
-*   **Module Resolution (`paths`, `baseUrl`, `moduleResolution`):**
-    *   `baseUrl` and `paths` are essential for configuring how TypeScript resolves non-relative module imports, which is common in monorepos when importing packages by name.
-    *   `moduleResolution` dictates how TypeScript finds modules in `node_modules`. The interaction with pnpm's symlinks in a monorepo is a key area to understand.
+- **Module Resolution (`paths`, `baseUrl`, `moduleResolution`):**
+  - `baseUrl` and `paths` are essential for configuring how TypeScript resolves non-relative module imports, which is common in monorepos when importing packages by name.
+  - `moduleResolution` dictates how TypeScript finds modules in `node_modules`. The interaction with pnpm's symlinks in a monorepo is a key area to understand.
 
-*   **pnpm Workspaces:**
-    *   pnpm workspaces utilize symlinks in `node_modules` to connect local packages, enabling them to depend on each other via package names.
+- **pnpm Workspaces:**
+  - pnpm workspaces utilize symlinks in `node_modules` to connect local packages, enabling them to depend on each other via package names.
 
 **Implications for Build System and Future Experiments:**
 
-*   The documentation confirms that the approach in Proposal 0001 of using `composite: true` without emitting declarations for internal packages was incorrect.
-*   For internal packages to participate in cross-package type-checking with `tsc -b` and `composite: true`, they will likely need to emit `.d.ts` files. `emitDeclarationOnly: true` appears to be the relevant option if we use `esbuild` for JavaScript.
-*   The persistent `TS2307` error in Proposal 0001 suggests an issue with how `tsc -b` resolves modules to the location of emitted `.d.ts` files within the pnpm workspace. Correct configuration of `paths` and `baseUrl` in the root `tsconfig.json` will be crucial.
+- The documentation confirms that the approach in Proposal 0001 of using `composite: true` without emitting declarations for internal packages was incorrect.
+- For internal packages to participate in cross-package type-checking with `tsc -b` and `composite: true`, they will likely need to emit `.d.ts` files. `emitDeclarationOnly: true` appears to be the relevant option if we use `esbuild` for JavaScript.
+- The persistent `TS2307` error in Proposal 0001 suggests an issue with how `tsc -b` resolves modules to the location of emitted `.d.ts` files within the pnpm workspace. Correct configuration of `paths` and `baseUrl` in the root `tsconfig.json` will be crucial.
 
 **Next Steps for Skeptical Constraint Discovery:**
 
@@ -64,36 +64,36 @@ Based on these findings, our experiments will focus on:
 2.  Configure `@cogtools/package-a` with a simple exported function and a `tsconfig.json` with `composite: true`. (Completed - Initial setup with `declaration: true`)
 3.  Configure `@cogtools/package-b` to depend on and import the function from `@cogtools/package-a`. (Completed)
 4.  Experiment with different `compilerOptions` in `@cogtools/package-a`'s `tsconfig.json`, specifically `noEmit: true`, `declaration: true`, and `emitDeclarationOnly: true`.
-    *   **Experiment 1a: `composite: true` and `noEmit: true`**
-        *   **Action:** Modified `packages/package-a/tsconfig.json` to include `"noEmit": true`, and removed `"declaration": true` and `"declarationMap": true`.
-        *   **Command:** `pnpm tsc -b packages/package-b`
-        *   **Observation:** The command failed with the following errors:
-            ```
-            ... (TS2792 errors related to @types/node/undici-types)
-            packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
-            ```
-        *   **Analysis:** This confirms the documentation that `composite: true` and `noEmit: true` are incompatible. The `TS6310` error explicitly states that a referenced composite project may not disable emit.
-        *   **Conclusion:** `composite: true` requires some form of emission.
-    *   **Experiment 1b: `composite: true` and `declaration: true`**
-        *   **Action:** Modified `packages/package-a/tsconfig.json` to include `"declaration": true`, `"declarationMap": true`, and removed `"noEmit": true`. (Completed)
-        *   **Command:** `pnpm tsc -b packages/package-b`
-        *   **Observation:** The command failed with the same errors as Experiment 1a:
-            ```
-            ... (TS2792 errors related to @types/node/undici-types)
-            packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
-            ```
-        *   **Analysis:** Simply having `declaration: true` is not enough to satisfy the emission requirement for `composite: true` in this setup. The `TS6310` error persists.
-        *   **Conclusion:** The type of emission (JavaScript + declarations vs. declarations only) might not be the primary issue here. It's possible the problem lies in how `tsc -b` finds the emitted files in the referenced project.
-    *   **Experiment 1c: `composite: true` and `emitDeclarationOnly: true`**
-        *   **Action:** Modified `packages/package-a/tsconfig.json` to include `"emitDeclarationOnly": true`, and removed `"declaration": true` and `"declarationMap": true`. (Completed)
-        *   **Command:** `pnpm tsc -b packages/package-b`
-        *   **Observation:** The command failed with the same errors as Experiment 1a and 1b:
-            ```
-            ... (TS2792 errors related to @types/node/undici-types)
-            packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
-            ```
-        *   **Analysis:** Using `emitDeclarationOnly: true` instead of `declaration: true` also does not resolve the `TS6310` error. This further indicates that the problem is not the *type* of emission but rather `tsc -b`'s ability to recognize and utilize the output of the referenced composite project in this monorepo structure.
-        *   **Conclusion:** `composite: true` requires emission, but the default configuration and simple emission options are not sufficient for `tsc -b` to resolve the dependency in this minimal monorepo setup. The issue likely lies in module resolution and how `tsc -b` locates the emitted files of the referenced project.
+    - **Experiment 1a: `composite: true` and `noEmit: true`**
+      - **Action:** Modified `packages/package-a/tsconfig.json` to include `"noEmit": true`, and removed `"declaration": true` and `"declarationMap": true`.
+      - **Command:** `pnpm tsc -b packages/package-b`
+      - **Observation:** The command failed with the following errors:
+        ```
+        ... (TS2792 errors related to @types/node/undici-types)
+        packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
+        ```
+      - **Analysis:** This confirms the documentation that `composite: true` and `noEmit: true` are incompatible. The `TS6310` error explicitly states that a referenced composite project may not disable emit.
+      - **Conclusion:** `composite: true` requires some form of emission.
+    - **Experiment 1b: `composite: true` and `declaration: true`**
+      - **Action:** Modified `packages/package-a/tsconfig.json` to include `"declaration": true`, `"declarationMap": true`, and removed `"noEmit": true`. (Completed)
+      - **Command:** `pnpm tsc -b packages/package-b`
+      - **Observation:** The command failed with the same errors as Experiment 1a:
+        ```
+        ... (TS2792 errors related to @types/node/undici-types)
+        packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
+        ```
+      - **Analysis:** Simply having `declaration: true` is not enough to satisfy the emission requirement for `composite: true` in this setup. The `TS6310` error persists.
+      - **Conclusion:** The type of emission (JavaScript + declarations vs. declarations only) might not be the primary issue here. It's possible the problem lies in how `tsc -b` finds the emitted files in the referenced project.
+    - **Experiment 1c: `composite: true` and `emitDeclarationOnly: true`**
+      - **Action:** Modified `packages/package-a/tsconfig.json` to include `"emitDeclarationOnly": true`, and removed `"declaration": true` and `"declarationMap": true`. (Completed)
+      - **Command:** `pnpm tsc -b packages/package-b`
+      - **Observation:** The command failed with the same errors as Experiment 1a and 1b:
+        ```
+        ... (TS2792 errors related to @types/node/undici-types)
+        packages/package-b/tsconfig.json(15,5): error TS6310: Referenced project '/home/user/cogtools/packages/package-a' may not disable emit.
+        ```
+      - **Analysis:** Using `emitDeclarationOnly: true` instead of `declaration: true` also does not resolve the `TS6310` error. This further indicates that the problem is not the _type_ of emission but rather `tsc -b`'s ability to recognize and utilize the output of the referenced composite project in this monorepo structure.
+      - **Conclusion:** `composite: true` requires emission, but the default configuration and simple emission options are not sufficient for `tsc -b` to resolve the dependency in this minimal monorepo setup. The issue likely lies in module resolution and how `tsc -b` locates the emitted files of the referenced project.
 
 ## Experiment 2: Finding the Right `tsconfig.json` for Internal Packages
 
@@ -108,15 +108,11 @@ Based on these findings, our experiments will focus on:
 
 **Observations:**
 
-*
+- **Analysis:**
 
-**Analysis:**
+- **Conclusion:**
 
-*
-
-**Conclusion:**
-
-*
+-
 
 ## Experiment 3: Cracking Module Resolution
 
@@ -130,15 +126,11 @@ Based on these findings, our experiments will focus on:
 
 **Observations:**
 
-*
+- **Analysis:**
 
-**Analysis:**
+- **Conclusion:**
 
-*
-
-**Conclusion:**
-
-*
+-
 
 ## Log Addendum (2025-07-24)
 
