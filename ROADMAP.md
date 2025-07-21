@@ -77,6 +77,13 @@ TODO: This is getting out of scope for the roadmap. Move elsewhere during spring
 
 - `WriteFile` and related tools are severely broken wrt escaping. They perform dumb syntax-unaware unescapes, often breaking Gemini's tool use and confusing it to no end.
 
+### Known Issues with Gemini CLI configuration
+
+TODO: Again, we need to re-study Gemini CLI docs and sources to make sure we're not missing something.
+
+- One-time tools discovery, at load. It is currently not possible to re-load the tool list. Severe limitation, we need to submit a PR.
+- `toolDiscoveryCommand` and `toolCallCommand` are treated as executable names, one cannot pass any arguments there.
+
 ## Concept
 
 Continue refining the [Concept document](docs/spec/concept.md).
