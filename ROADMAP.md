@@ -49,6 +49,14 @@ Observe complexity, esp. wrt objective analysis and decision-making. Externalizi
 > Ideally this would be encoded as a standalone "metacortex" (a mix of external tooling and cognitive tools) for TypeScript projects for Gemini CLI,
 heavily relying on `gemini-cli-cogtools` implementation, and published on GitHub as a separate project.
 
+### AI Teamwork
+
+The above Cycle presumes a single AI team member / developer and a team of experts.
+
+Several developers --- and, in general, other team members (incl. managers and other roles) would be more efficient. Including competitive parallel task execution (where several AIs compete to produce the best result).
+
+`git workspaces` is our friend.
+
 ### Composable GEMINI.md
 
 To implement the above NB, we need to generate `GEMINI.md`. Ideally it would be a template. Several ways we can hook that (or maybe it is not even needed), need to look into it deeper.
