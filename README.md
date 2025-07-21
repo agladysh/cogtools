@@ -1,4 +1,4 @@
-# @agladysh/gemini-cli-cogtools: Metacognitive Tooling Scaffolding for Gemini CLI
+# Metacognitive Tooling Scaffolding for Gemini CLI
 
 The `@agladysh/gemini-cli-cogtools` utility provides a declarative way to provide metacognitive tools for Gemini
 in the [Gemini CLI](https://github.com/google-gemini/gemini-cli) environment.
