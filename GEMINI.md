@@ -35,35 +35,28 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 ## Next
 
 1. Read the following files:
+   - User-facing Documentation
+     - [README](README.md)
 
-    - User-facing Documentation
+   - Product Documentation
+     - [Concept](docs/spec/concept.md)
+     - [Roadmap](ROADMAP.md)
+     - [Ad-Hoc TODO List](TODO.md)
 
-      - [README](README.md)
+   - Development Documentation
+     - [Contribution Guidelines](CONTRIBUTING.md)
 
-    - Product Documentation
+   - Implicit Coding Style Guidelines
+     - [.editorconfig](.editorconfig)
+     - [.prettierrc.json](.prettierrc.json)
 
-      - [Concept](docs/spec/concept.md)
-      - [Roadmap](ROADMAP.md)
-      - [Ad-Hoc TODO List](TODO.md)
+   - Project Configuration
+     - [.npmrc](.npmrc)
+     - [pnpm-workspace.yaml](pnpm-workspace.yaml)
+     - [package.json](package.json)
 
-    - Development Documentation
-
-      - [Contribution Guidelines](CONTRIBUTING.md)
-
-    - Implicit Coding Style Guidelines
-
-      - [.editorconfig](.editorconfig)
-      - [.prettierrc.json](.prettierrc.json)
-
-    - Project Configuration
-
-      - [.npmrc](.npmrc)
-      - [pnpm-workspace.yaml](pnpm-workspace.yaml)
-      - [package.json](package.json)
-
-    - Source Code
-
-      - Perform similar reads in the [packages/](packages/) directory.
+   - Source Code
+     - Perform similar reads in the [packages/](packages/) directory.
 
 2. Mercilessly update and improve the Post On-Boarding Dump below, considering current text obsolete.
 
@@ -88,16 +81,16 @@ Current Status & Roadmap:
 
 - The project is in the conceptualization/ideation stage.
 - Immediate next steps involve continuing environment configuration (builder, linter, formatter, tests) and
-    setting up an AI-driven development cycle.
+  setting up an AI-driven development cycle.
 - There's a detailed "AI-driven Development Cycle" outlined in `ROADMAP.md`, emphasizing a multi-stage review and execution
-    process for AI.
+  process for AI.
 - The project aims to use `gemini-cli` as a reference for its setup.
 
 Contribution Guidelines:
 
 - Emphasizes KISS, YAGNI, DRY, SOLID, Hexagonal Architecture.
 - Hard Rules: Do NOT generate `package.json` dependencies directly (use `pnpm`), and do NOT execute
-    pre-existing `TODO` items without explicit direction.
+  pre-existing `TODO` items without explicit direction.
 
 Tooling & Configuration:
 
@@ -110,7 +103,7 @@ Tooling & Configuration:
 `cogtools-discover` current state:
 
 - The `main.ts` for `cogtools-discover` currently just outputs an empty JSON array `[]`. This indicates it's a
-    placeholder and needs implementation to actually discover tools.
+  placeholder and needs implementation to actually discover tools.
 - It's set up as an executable (`#!/usr/bin/env node`) and built with `esbuild`.
 
 Key Concepts from `docs/spec/concept.md`:
@@ -126,4 +119,4 @@ Known Issues/Considerations (from `ROADMAP.md` and `TODO.md`):
 - `gemini-cli` `toolDiscoveryCommand` and `toolCallCommand` don't support arguments.
 - `WriteFile` and related tools in `gemini-cli` have escaping issues.
 - Need to study `gemini-cli` docs/code for robust shell tool protocol and `.gemini/` directory discovery.
-</gemini>
+  </gemini>
