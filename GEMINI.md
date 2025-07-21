@@ -65,7 +65,7 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 
       - Perform similar reads in the [packages/](packages/) directory.
 
-2. Mercilessly update the Post On-Boarding Dump below, considering current text obsolete.
+2. Mercilessly update and improve the Post On-Boarding Dump below, considering current text obsolete.
 
 ## Post On-Boarding Dump
 
