@@ -61,6 +61,8 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
    - Source Code
      - Perform similar reads in the [packages/](packages/) directory.
 
+   Warning: DO NOT read `pnpm-lock.yaml` directly. Its structure triggers a low-level token generation issue in the Gemini CLI system.
+
 2. Mercilessly update and improve the Post On-Boarding Dump below, considering current text obsolete.
 
 3. Judge your update harshly. If deemeed worthy, update `GEMINI.md`.
