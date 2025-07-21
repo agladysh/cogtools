@@ -18,6 +18,7 @@ AI-Modification-Rules: |
 This is a normative example.
 
 ```yaml
+#! /usr/bin/env cogtool-yaml
 $schema: schema:agladysh-research.org,2025/cogtools:tool
 
 name: facepalm
@@ -113,6 +114,7 @@ TODO: Unpack schema etc. Note parameters are Open API 3.0 (as per Gemini CLI req
 * `cogtools` is an npx-compatible porcelain utility
 * `cogtools-discover` is a tool discovery plumbing utility following the implicit Gemini CLI shell protocol
 * `cogtools-call` is a tool calling plumbing utility for Gemini CLI following the implicit Gemini CLI shell protocol
+* `cogtools-yaml` is a tool execution plumbing utility for YAML tool definitions
 
 Thus, `.gemini/settings.json` would look something like this:
 
@@ -123,7 +125,53 @@ Thus, `.gemini/settings.json` would look something like this:
 }
 ```
 
-TODO: Explicitly document the implicit Gemini CLI protocol we follow in a separate spec, so it is generally reusable. Refer to the Gemini CLI docs.
+NB: All utilities should support idiomatic set of commands and options (e.g. `--version`, `--help`). Each utility should also come with a man page, as is proper.
+
+### `cogtools-discover`
+
+Computes and outputs tool schema for PWD, as per the Gemini CLI. Outputs JSON to stdout.
+
+Usage: `cogtools-discover [--yaml]`
+
+Options:
+
+* `--yaml` to output YAML instead of JSON for human-readability
+
+Error-handling: TODO TBD.
+
+### `cogtools-call`
+
+Calls the specified tool, resolving it from the provided tool name and PWD. Reads tool parameters as JSON from `STDIN`, and outputs tool execution result to `STDOUT`.
+
+Usage: `echo '<tool-parameters>' | cogtools-call [--verbose] [--yaml] <tool-name>`
+
+Options:
+
+* `--verbose` outputs tool name resolution and potentially other helpful diagnostics to `STDERR` to ease user-level troubleshooting
+* `--yaml` treats `STDIN` as YAML, not JSON, for human developer convenience
+
+Error-handling: TODO TBD.
+
+### `cogtools`
+
+Initially implemented as a dumb proxy for `cogtools-<porcelain>` utilities, similar to how `git` works
+(though we may rely on node packages for porcelain provisioning).
+
+Usage: `cogtools <porcelain> [porcelain arguments]`
+
+Additionally implements idiomatic `help [porcelain]` command.
+
+TODO: Refine scope and functionality of the tool beyond basics.
+
+## Configuration
+
+* Process environment and project's .env (latter is tricky wrt what is primary)
+* Project's `package.json`
+* Project root `.cogtoolrc.yaml` (is that the most idiomatic name?)
+* Project-Home-System `.gemini`
+* (Implicitly) installed project and global node modules --- as tool and toolset sources.
+
+## Ideation Sink
 
 ### Setup
 
@@ -135,8 +183,10 @@ TODO: Ideally should be something like the following:
 
 However, interactive mode is a third-tier priority.
 
-## Temporary Notes
+### Other
 
-* Read toolset from ENV too
+* Read toolsets from ENV too
 * Non-interactive init and configuration
 * Auto-injection of tool table into project's GEMINI.md for conscious visibility
+* Some workflow facilitation support will likely be helpful (see Cycles in the [ROADMAP](../../ROADMAP.md)), but that's a next step, after we will get the thing up and running.
+  Perhaps our porcelain command would interface with `package.json` structure nicely.
