@@ -72,39 +72,56 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 <gemini>
 Project Overview:
 
-- Name: Cogtools
+- Name: Cogtools (`@agladysh/cogtools`)
 - Vision: To provide a robust, extensible, and AI-friendly framework for defining, discovering, and
   executing metacognitive tools for AI agents.
 - Core Principles: Declarative Tool Definition (YAML), AI-Friendly, Extensible, Modular, Transparent.
 - Components:
-  - cogtools: Main CLI utility.
-  - cogtools-discover: Utility for discovering tools (currently outputs []).
-  - cogtools-call: Utility for executing tools.
-  - cogtools-yaml: Utility for executing YAML-defined tools.
+  - `cogtools`: Main CLI utility (porcelain).
+  - `cogtools-discover`: Utility for discovering tools (plumbing, currently outputs `[]`).
+  - `cogtools-call`: Utility for executing tools (plumbing).
+  - `cogtools-yaml`: Utility for executing YAML-defined tools.
 
 Current Status & Roadmap:
 
 - The project is in the conceptualization/ideation stage.
 - Immediate next steps involve continuing environment configuration (builder, linter, formatter, tests) and
     setting up an AI-driven development cycle.
-- There's a detailed "AI-driven Development Cycle" outlined, emphasizing a multi-stage review and execution
+- There's a detailed "AI-driven Development Cycle" outlined in `ROADMAP.md`, emphasizing a multi-stage review and execution
     process for AI.
+- The project aims to use `gemini-cli` as a reference for its setup.
 
 Contribution Guidelines:
 
 - Emphasizes KISS, YAGNI, DRY, SOLID, Hexagonal Architecture.
-- Hard Rules: Do NOT generate package.json dependencies directly (use pnpm), and do NOT execute
-    pre-existing TODO items without explicit direction.
+- Hard Rules: Do NOT generate `package.json` dependencies directly (use `pnpm`), and do NOT execute
+    pre-existing `TODO` items without explicit direction.
 
 Tooling & Configuration:
 
-- Tools are defined declaratively in YAML (e.g., facepalm example in docs/spec/concept.md).
-- pnpm is the package manager, with strict versioning and workspace management.
-- esbuild for building, eslint for linting, prettier for formatting.
-- tsconfig.json defines TypeScript configuration.
+- Tools are defined declaratively in YAML (e.g., `facepalm` example in `docs/spec/concept.md`).
+- `pnpm` is the package manager, with strict versioning and workspace management (`pnpm-workspace.yaml`).
+- `esbuild` for building, `eslint` for linting, `prettier` for formatting.
+- `tsconfig.json` defines TypeScript configuration.
+- `.editorconfig`, `.prettierrc.json`, `.npmrc` define coding style and package manager behavior.
 
 `cogtools-discover` current state:
 
-- The main.ts for cogtools-discover currently just outputs an empty JSON array []. This indicates it's a
+- The `main.ts` for `cogtools-discover` currently just outputs an empty JSON array `[]`. This indicates it's a
     placeholder and needs implementation to actually discover tools.
+- It's set up as an executable (`#!/usr/bin/env node`) and built with `esbuild`.
+
+Key Concepts from `docs/spec/concept.md`:
+
+- `cogtools-discover` and `cogtools-call` are plumbing utilities designed to integrate with `gemini-cli`'s `toolDiscoveryCommand` and `toolCallCommand`.
+- Tools can be defined as YAML files (e.g., `facepalm` example) with `OpenAPI 3.0` compatible parameters.
+- The `implementation` field in YAML tools uses `nunjucks` templating.
+- Configuration will involve environment variables, `package.json`, `.cogtoolrc.yaml`, and potentially `.gemini` directories.
+
+Known Issues/Considerations (from `ROADMAP.md` and `TODO.md`):
+
+- `gemini-cli` tool discovery is one-time at load; need to investigate re-loading or PR.
+- `gemini-cli` `toolDiscoveryCommand` and `toolCallCommand` don't support arguments.
+- `WriteFile` and related tools in `gemini-cli` have escaping issues.
+- Need to study `gemini-cli` docs/code for robust shell tool protocol and `.gemini/` directory discovery.
 </gemini>
