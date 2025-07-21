@@ -1,5 +1,7 @@
 # Change Request: Build System Enhancements
 
+* Proposal Status: [Catastrophic Failure](report.md)
+
 ## Task Understanding
 
 The goal is to implement a robust build system for the `cogtools` monorepo, focusing on TypeScript compilation and testing, while adhering to the following requirements:
