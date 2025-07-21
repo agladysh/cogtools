@@ -1,0 +1,5 @@
+{
+  "yaml-embedded-languages.include": {
+    "njk": "source.njk"
+  }
+}
