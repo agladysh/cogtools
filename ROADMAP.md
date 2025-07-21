@@ -80,6 +80,10 @@ support of shell variables in the `.gemini/settings` file.
 
 Placeholder for implied (known and unknown) work complimenting what is described above.
 
+## Spring Cleanup
+
+When above is reasonably complete, do spring cleanup. Primary focus: robust TODO GC.
+
 ## Next
 
 Placeholder for implied (known and unknown) work following what is described above.
