@@ -1,5 +1,5 @@
 {
-  "name": "gemini-cli-cogtools",
+  "name": "@agladysh/gemini-cli-cogtools",
   "version": "1.0.0",
   "description": "Cognitive Tooling Scaffolding for Gemini CLI",
   "main": "index.js",
