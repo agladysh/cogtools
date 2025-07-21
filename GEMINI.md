@@ -67,6 +67,8 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 
 2. Mercilessly update and improve the Post On-Boarding Dump below, considering current text obsolete.
 
+3. Judge your update harshly. If deemeed worthy, update `GEMINI.md`.
+
 ## Post On-Boarding Dump
 
 <gemini>
