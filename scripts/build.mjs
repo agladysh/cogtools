@@ -11,6 +11,7 @@ const buildOptions = {
   entryPoints: [entryPoint],
   bundle: true,
   platform: 'node',
+  format: 'esm',
   outfile: outFile,
   // Add any other common esbuild options here
 };
