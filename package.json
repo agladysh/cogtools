@@ -7,9 +7,6 @@
     "node": ">=20.0.0"
   },
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
   "private": "true",
   "repository": {
     "type": "git",
@@ -26,9 +23,11 @@
   "license": "MIT",
   "packageManager": "pnpm@10.13.1",
   "devDependencies": {
+    "@types/node": "^24.0.15",
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "nunjucks": "^3.2.4"
+    "nunjucks": "^3.2.4",
+    "yargs": "^18.0.0"
   }
 }
