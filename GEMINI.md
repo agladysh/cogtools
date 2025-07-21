@@ -34,27 +34,76 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 
 ## Next
 
-Read the following files:
+1. Read the following files:
 
-- User-facing Documentation
-  - [README](README.md)
+    - User-facing Documentation
 
-- Product Documentation
-  - [Concept](docs/spec/concept.md)
-  - [Roadmap](ROADMAP.md)
-  - [Ad-Hoc TODO List](TODO.md)
+      - [README](README.md)
 
-- Development Documentation
-  - [Contribution Guidelines](CONTRIBUTING.md)
+    - Product Documentation
 
-- Implicit Coding Style Guidelines
-  - [.editorconfig](.editorconfig)
-  - [.prettierrc.json](.prettierrc.json)
+      - [Concept](docs/spec/concept.md)
+      - [Roadmap](ROADMAP.md)
+      - [Ad-Hoc TODO List](TODO.md)
 
-- Project Configuration
-  - [.npmrc](.npmrc)
-  - [pnpm-workspace.yaml](pnpm-workspace.yaml)
-  - [package.json](package.json)
+    - Development Documentation
 
-- Source Code
-  - Perform similar reads in the [packages/](packages/) directory.
+      - [Contribution Guidelines](CONTRIBUTING.md)
+
+    - Implicit Coding Style Guidelines
+
+      - [.editorconfig](.editorconfig)
+      - [.prettierrc.json](.prettierrc.json)
+
+    - Project Configuration
+
+      - [.npmrc](.npmrc)
+      - [pnpm-workspace.yaml](pnpm-workspace.yaml)
+      - [package.json](package.json)
+
+    - Source Code
+      - Perform similar reads in the [packages/](packages/) directory.
+
+2. Mercilessly update the Post On-Boarding Dump below, considering current text obsolete.
+
+## Post On-Boarding Dump
+
+<gemini>
+Project Overview:
+
+- Name: Cogtools
+- Vision: To provide a robust, extensible, and AI-friendly framework for defining, discovering, and
+  executing metacognitive tools for AI agents.
+- Core Principles: Declarative Tool Definition (YAML), AI-Friendly, Extensible, Modular, Transparent.
+- Components:
+  - cogtools: Main CLI utility.
+  - cogtools-discover: Utility for discovering tools (currently outputs []).
+  - cogtools-call: Utility for executing tools.
+  - cogtools-yaml: Utility for executing YAML-defined tools.
+
+Current Status & Roadmap:
+
+- The project is in the conceptualization/ideation stage.
+- Immediate next steps involve continuing environment configuration (builder, linter, formatter, tests) and
+    setting up an AI-driven development cycle.
+- There's a detailed "AI-driven Development Cycle" outlined, emphasizing a multi-stage review and execution
+    process for AI.
+
+Contribution Guidelines:
+
+- Emphasizes KISS, YAGNI, DRY, SOLID, Hexagonal Architecture.
+- Hard Rules: Do NOT generate package.json dependencies directly (use pnpm), and do NOT execute
+    pre-existing TODO items without explicit direction.
+
+Tooling & Configuration:
+
+- Tools are defined declaratively in YAML (e.g., facepalm example in docs/spec/concept.md).
+- pnpm is the package manager, with strict versioning and workspace management.
+- esbuild for building, eslint for linting, prettier for formatting.
+- tsconfig.json defines TypeScript configuration.
+
+`cogtools-discover` current state:
+
+- The main.ts for cogtools-discover currently just outputs an empty JSON array []. This indicates it's a
+    placeholder and needs implementation to actually discover tools.
+</gemini>
