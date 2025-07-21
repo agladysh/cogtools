@@ -54,6 +54,9 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
      - [.npmrc](.npmrc)
      - [pnpm-workspace.yaml](pnpm-workspace.yaml)
      - [package.json](package.json)
+     - [.husky/](.husky/)
+     - [commitlint.config.cjs](commitlint.config.cjs)
+     - [.changeset/](.changeset/)
 
    - Source Code
      - Perform similar reads in the [packages/](packages/) directory.
