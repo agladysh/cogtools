@@ -23,7 +23,9 @@
   "license": "MIT",
   "packageManager": "pnpm@10.13.1",
   "scripts": {
-    "format": "prettier --write .",
+    "format:fix": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format": "pnpm format:fix",
     "lint": "eslint .",
     "build": "pnpm -r build",
     "test": "pnpm -r test",

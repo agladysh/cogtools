@@ -2,7 +2,7 @@
 
 The `@cogtools/cogtools` utility provides a declarative way to provide metacognitive tools for AI agents.
 
-Metacognitive tools provide pre-made thought-forms for an AI, guiding and shaping is cognition.
+Metacognitive tools provide pre-made  thought-forms for an AI, guiding and shaping is cognition.
 
 Initial scope is Gemini in the [Gemini CLI](https://github.com/google-gemini/gemini-cli) environment.
 
