@@ -40,6 +40,8 @@ Read the following files:
 
 * Product Documentation
   * [Concept](docs/spec/concept.md)
+  * [Roadmap](ROADMAP.md)
+  * [Ad-Hoc TODO List](TODO.md)
 
 * Development Documentation
   * [Contribution Guidelines](CONTRIBUTING.md)
