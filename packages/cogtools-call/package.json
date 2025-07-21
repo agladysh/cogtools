@@ -1,0 +1,17 @@
+{
+  "name": "@cogtools/call",
+  "version": "1.0.0",
+  "description": "Utility for executing metacognitive tools.",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "cogtools-call": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.mjs src/index.ts dist/index.js",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@cogtools/lib": "workspace:*"
+  }
+}

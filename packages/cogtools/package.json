@@ -1,0 +1,17 @@
+{
+  "name": "@cogtools/cogtools",
+  "version": "1.0.0",
+  "description": "Main CLI utility for metacognitive tools.",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "cogtools": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node ../../scripts/build.mjs src/index.ts dist/index.js",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@cogtools/lib": "workspace:*"
+  }
+}
