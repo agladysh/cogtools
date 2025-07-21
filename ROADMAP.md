@@ -12,11 +12,11 @@ Use the [gemini-cli](https://github.com/google-gemini/gemini-cli/) project as a 
 
 Known tasks:
 
-- [ ] Builder
-- [ ] Linter
-- [ ] Code formatter
-- [ ] Tests
-- [ ] Package publication
+- [ ] Builder (esbuild)
+- [ ] Linter (tsc, eslint, markdownlint, shellcheck)
+- [ ] Code formatter (prettier)
+- [ ] Tests (vitest)
+- [ ] Package publication (later!)
 
 ## AI-driven Development Cycle
 
