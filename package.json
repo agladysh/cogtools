@@ -1,7 +1,7 @@
 {
   "name": "@agladysh/gemini-cli-cogtools",
   "version": "1.0.0",
-  "description": "Cognitive Tooling Scaffolding for Gemini CLI",
+  "description": "Metacognitive Tooling Scaffolding for Gemini CLI",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
