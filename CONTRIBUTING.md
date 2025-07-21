@@ -14,34 +14,6 @@ As an AI assistant, it is paramount to operate with utmost resource efficiency a
 - **Minimize Wasteful Operations:** Be mindful of operations that consume excessive resources. For instance, proposing to manually re-create a large number of files when they can be restored from version control is an example of an inefficient and wasteful approach. Such "idiocy" (as previously identified) is to be avoided.
 - **Prioritize Intelligent Automation:** Always seek to solve problems by leveraging the power of automation and existing tools, rather than resorting to manual, repetitive, or resource-intensive methods.
 
-### Guiding Principles
-
-Hardcore old-school.
-
-- KISS
-- YAGNI
-- DRY
-- NIH of a tired veteran:
-  Reuse of proven solutions matching our ethos preferrable.
-  NIH is forbidden unless it is exuisitly robustly defended. Welcome with open hands otherwise.
-
-References-in-spirit, apply ethos filter:
-
-- [12 factors](https://12factor.net/)
-- DJB
-- SOLID
-- Suckless
-- Hexagonal Architecture
-
-TODO: Refine (incl. describe how ethos filter applies), Add links.
-
-### Environment
-
-Assume code execution environment is already configured by the user prior to the start of the session.
-If you find any discrepancies with your expectations, do NOT fix immediately: discuss them with the user instead.
-
-### Hard Rules
-
 ### Directives for AI Assistants
 
 To ensure clear communication and effective collaboration, especially when addressing deeply ingrained behavioral patterns, specific directives may be used:
@@ -51,18 +23,25 @@ To ensure clear communication and effective collaboration, especially when addre
 
 For all other guidelines and recommendations, a collaborative and guiding tone will be used.
 
-- **Dependency Management:** We should use `pnpm add` or `pnpm remove` commands (with `--filter` for workspace packages) to manage all dependencies in `package.json` files. This approach ensures `pnpm` correctly manages version specifiers and `pnpm-lock.yaml`. Directly modifying `package.json` files for dependency changes is not recommended as it can lead to inconsistencies.
+### Guiding Principles
 
-### Dependency Management Recovery Procedure
+Our project adheres to the following core principles:
 
-If `package.json` files are inadvertently modified directly, the following procedure can be used to recover and re-synchronize with `pnpm`'s management:
+- **KISS (Keep It Simple, Stupid):** Favor simplicity over complexity.
+- **YAGNI (You Aren't Gonna Need It):** Implement only what is currently required.
+- **DRY (Don't Repeat Yourself):** Avoid redundant code or information.
+- **NIH (Not Invented Here) of a Tired Veteran:** We prefer reusing proven solutions that align with our ethos. New solutions are welcome only if robustly defended and demonstrably superior.
+- **References-in-spirit:** We draw inspiration from principles like [12 Factor App](https://12factor.net/), DJB's design philosophy, SOLID principles, Suckless philosophy, and Hexagonal Architecture. We apply an ethos filter to ensure alignment with our project's values.
 
-1.  **Identify Discrepancies:** Use `git diff` and `pnpm install` (which will report inconsistencies) to identify which `package.json` files and dependencies are out of sync.
-2.  **Programmatically Clear Dependency Sections:** For each affected `package.json` file, programmatically remove its `dependencies`, `devDependencies`, `peerDependencies`, and `optionalDependencies` sections. This ensures a clean slate for `pnpm`.
-3.  **Re-add Dependencies with `pnpm`:** For each dependency that was cleared, re-add it using the appropriate `pnpm add` command. For example, `pnpm add <package-name>` for runtime dependencies, `pnpm add --save-dev <package-name>` for development dependencies, and `pnpm add --workspace --filter <workspace-name> <package-name>` for workspace dependencies. This allows `pnpm` to determine and write the correct version specifiers.
-4.  **Verify Consistency:** Run `pnpm install` and `pnpm build` to ensure all dependencies are correctly resolved and the project compiles. Use `git diff` to confirm that `package.json` and `pnpm-lock.yaml` reflect only `pnpm`-managed changes.
+### Environment
 
-### Understanding Git State (for AI Assistants)
+We assume the code execution environment is already configured by the user prior to the start of the session. If any discrepancies are found with expectations, we will discuss them with the user instead of immediately attempting a fix.
+
+## Change Management Workflow
+
+This project adheres to a structured change management workflow designed to ensure code quality, maintainability, and efficient collaboration.
+
+### 1. Git Fundamentals: Understanding the State
 
 To effectively manage changes and avoid common pitfalls, it is crucial to have a precise and actionable understanding of Git's core states and how commands interact with them.
 
@@ -77,7 +56,7 @@ To effectively manage changes and avoid common pitfalls, it is crucial to have a
 
 **Key Principle:** A commit records the changes that are _in the staging area_, not necessarily all changes in your working directory. Changes in the working directory that are not staged will _not_ be included in the next commit.
 
-### Meticulous Staging and Committing
+### 2. Meticulous Staging and Committing
 
 To ensure that every commit is atomic, logically coherent, and accurately reflects your intended changes, follow these steps rigorously:
 
@@ -107,52 +86,46 @@ To ensure that every commit is atomic, logically coherent, and accurately reflec
     - After a commit, immediately run `git status` to confirm that the working directory is clean or contains only expected changes for the _next_ logical task.
     - For critical operations (e.g., re-applying history), perform a `git diff HEAD <original_commit_hash>` to ensure no information loss.
 
-### Interacting with Pre-Commit Hooks (Husky)
+### 3. Interacting with Pre-Commit Hooks (Husky)
 
 Our pre-commit hook (`pnpm precommit`) is designed to enforce code quality _before_ a commit is finalized. It does **not** modify files in your working directory or staging area.
 
-- **Hook Failure:** If the pre-commit hook fails (e.g., due to formatting issues or type errors), the commit will be aborted.
-  - **Diagnose:** Read the output carefully to understand why the hook failed (e.g., `prettier --check` found issues, `tsc --noEmit` reported errors, `eslint` found problems).
-  - **Rectify:** Address the issues in your working directory. For formatting, run `pnpm format:fix`. For linting or type errors, manually correct the code.
+- **Hook Failure:** If the pre-commit hook fails (e.g., due to formatting issues, type errors, or invalid commit messages), the commit will be aborted.
+  - **Diagnose:** Read the output carefully to understand why the hook failed (e.g., `prettier --check` found issues, `tsc --noEmit` reported errors, `eslint` found problems, Commitlint reported message violations).
+  - **Rectify:** Address the issues in your working directory. For formatting, run `pnpm format:fix`. For linting or type errors, manually correct the code. For commit message issues, amend the message (if the commit attempt was the first one after a successful commit) or simply re-run `git commit` with a corrected message (if no commit was created).
   - **Re-stage (if necessary):** If you ran `pnpm format:fix` or made other changes to fix issues, you must `git add` those changes to the staging area before retrying the commit.
   - **Retry Commit:** Once issues are resolved and changes are staged, attempt the `git commit` again.
 
-### Managing `pnpm-lock.yaml`
-
-The `pnpm-lock.yaml` file is automatically generated and managed by `pnpm`. Changes to this file are often side effects of other operations (e.g., `pnpm install`, `pnpm add`, `pnpm remove`).
-
-- **Commit Separately:** If `pnpm-lock.yaml` is modified as a side effect of a functional change or a dependency addition/removal, it is recommended to commit the `pnpm-lock.yaml` change in a **separate `chore` commit** (e.g., `chore: update pnpm-lock.yaml`). This keeps the commit history clean and focused.
-- **Avoid Manual Edits:** Never manually edit `pnpm-lock.yaml`.
-
-## Change Management Workflow
-
-This project adheres to a structured change management workflow designed to ensure code quality, maintainability, and efficient collaboration, especially in an AI-assisted development environment.
-
-### 1. Feature Branching
-
-- It is recommended to develop all new features, bug fixes, or refactorings on dedicated feature branches (e.g., `feat/my-feature`, `fix/bug-description`, `refactor/module-x`).
-- We should avoid committing directly to the `main` branch, as it must always remain stable and deployable.
-
-### 2. Atomic Commits
-
-- Each Git commit should represent a single, logical change with a minimal, reasonable scope. Avoid creating commits with an unreasonable or overly broad scope.
-- It is important to craft clear, concise, and descriptive commit messages, ideally following a conventional format (e.g., `feat: Add new user authentication`, `fix: Resolve login redirect bug`).
-- We should prefer atomic Git commit operations (e.g., `git commit -a -m "..."` for tracked files) or ensure staging and committing are part of a robust, single-step process. Avoid using `git add <file>...` followed by `git commit` as separate steps, as this can lead to inconsistent states if pre-commit hooks fail.
-
-### 3. Pre-Commit Validation (Local Enforcement)
-
-- We rely on the `pre-commit` Git hook (managed by Husky) to automatically validate changes before a commit is finalized. It is important not to bypass pre-commit hooks unless explicitly instructed by a human user for debugging purposes.
-- The `pre-commit` hook executes the `pnpm precommit` script, which includes:
-  - `pnpm format:check`: Verifies code formatting.
-  - `pnpm typecheck`: Ensures TypeScript code compiles without errors.
-  - `pnpm lint`: Runs static analysis for code quality and potential issues.
-- Any issues reported by the pre-commit hook should be addressed before attempting to commit again.
-
 ### 4. Dependency Management
 
-- We should use `pnpm add` or `pnpm remove` commands (with `--filter` for workspace packages) to manage all dependencies in `package.json` files. This ensures `pnpm` correctly manages version specifiers and `pnpm-lock.yaml`. Refer to the "Dependency Management Recovery Procedure" if this rule is inadvertently violated.
+- We should use `pnpm add` or `pnpm remove` commands (with `--filter` for workspace packages) to manage all dependencies in `package.json` files. This ensures `pnpm` correctly manages version specifiers and `pnpm-lock.yaml`.
+- **Avoid Direct Modification:** Directly modifying `package.json` files for dependency changes is not recommended as it can lead to inconsistencies. Refer to the "Dependency Management Recovery Procedure" if this rule is inadvertently violated.
 
-### 5. Comprehensive Pre-Integration Validation
+### 5. Changeset Management
+
+We use Changesets to manage versioning and changelogs across our monorepo.
+
+- **Creating a Changeset:** When you complete a logical change (feature, fix, chore), run `pnpm changeset` (or `npx changeset`) to create a new changeset file. This file describes the change, its impact (major, minor, patch), and which packages it affects.
+- **Versioning and Publishing:** The release process involves:
+  1.  Running `pnpm changeset version` to apply version bumps and update changelogs based on all accumulated changeset files.
+  2.  Committing these version and changelog changes.
+  3.  Running `pnpm changeset publish` to publish the updated packages.
+
+### 6. Commit Message Guidelines (Commitlint)
+
+We enforce conventional commit messages using Commitlint to ensure a consistent and readable Git history.
+
+- **Format:** Commit messages should follow the format: `<type>(<scope>): <subject>`
+  - **`<type>`:** Must be lowercase and one of: `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`.
+  - **`<scope>` (optional):** Describes the part of the codebase affected (e.g., `core`, `cli`, `docs`).
+  - **`<subject>`:** A concise description of the change, starting with a lowercase letter, no period at the end.
+- **Examples:**
+  - `feat(cli): add new command for tool discovery`
+  - `fix(deps): update pnpm-lock.yaml after security audit`
+  - `docs: clarify AI directives in contributing guide`
+  - `chore: apply formatting fixes`
+
+### 7. Comprehensive Pre-Integration Validation
 
 - It is important to run the `pnpm preflight` script (`pnpm format:fix && pnpm typecheck && pnpm lint && pnpm build && pnpm test`) before creating a Pull Request or merging changes into the `main` branch.
 - This script performs a full suite of checks, including:
@@ -163,13 +136,13 @@ This project adheres to a structured change management workflow designed to ensu
   - Running all tests.
 - We should not submit a Pull Request or merge changes if the `pnpm preflight` script reports any failures.
 
-### 6. Pull Request and Code Review
+### 8. Pull Request and Code Review
 
 - We should create Pull Requests (PRs) for all changes to be integrated into the `main` branch.
 - It is important to provide a clear and concise description of the changes in the PR, referencing relevant issues or tasks.
 - We should participate actively in code reviews, providing constructive feedback and addressing comments promptly.
 
-### 7. AI Assistant's Role in Change Management
+### 9. AI Assistant's Role in Change Management
 
 As an AI assistant, I am an active participant in this workflow:
 
