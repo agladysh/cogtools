@@ -2,7 +2,7 @@
 
 ## Document Status
 
-TODO: This is a *normative* minimal document, to be rewritten pre-publication.
+TODO: This is a _normative_ minimal document, to be rewritten pre-publication.
 
 ## For AI Assistants
 
@@ -10,20 +10,20 @@ TODO: This is a *normative* minimal document, to be rewritten pre-publication.
 
 Hardcore old-school.
 
-* KISS
-* YAGNI
-* DRY
-* NIH of a tired veteran:
+- KISS
+- YAGNI
+- DRY
+- NIH of a tired veteran:
   Reuse of proven solutions matching our ethos preferrable.
   NIH is forbidden unless it is exuisitly robustly defended. Welcome with open hands otherwise.
 
 References-in-spirit, apply ethos filter:
 
-* [12 factors](https://12factor.net/)
-* DJB
-* SOLID
-* Suckless
-* Hexagonal Architecture
+- [12 factors](https://12factor.net/)
+- DJB
+- SOLID
+- Suckless
+- Hexagonal Architecture
 
 TODO: Refine (incl. describe how ethos filter applies), Add links.
 
@@ -34,6 +34,6 @@ If you find any discrepancies with your expectations, do NOT fix immediately: di
 
 ### Hard Rules
 
-* **THOU SHALL NOT** generate `package.json` dependencies directly. This creates versioning chaos. Use `pnpm` instead.
-* **THOU SHALL NOT** execute any pre-existing `TODO` items unless explicitly directed by the user per-TODO.
+- **THOU SHALL NOT** generate `package.json` dependencies directly. This creates versioning chaos. Use `pnpm` instead.
+- **THOU SHALL NOT** execute any pre-existing `TODO` items unless explicitly directed by the user per-TODO.
   Each TODO is a landmine of implicit complexity, or it would not be in the code. Discuss instead.
