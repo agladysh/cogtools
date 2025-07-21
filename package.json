@@ -29,6 +29,7 @@
     "lint": "eslint .",
     "build": "pnpm -r build",
     "test": "pnpm -r test",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules",
     "typecheck": "tsc --noEmit",
     "preflight": "pnpm format:fix && pnpm typecheck && pnpm lint && pnpm build && pnpm test",
     "precommit": "pnpm format:check && pnpm typecheck && pnpm lint",
