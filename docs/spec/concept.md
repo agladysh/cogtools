@@ -20,7 +20,7 @@ AI-Modification-Rules: |
 This is a normative example.
 
 ```yaml
-#! /usr/bin/env cogtool-yaml
+#! /usr/bin/env cogtools-yaml
 $schema: schema:agladysh-research.org,2025/cogtools:tool
 
 name: facepalm
