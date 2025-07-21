@@ -34,7 +34,8 @@ If you find any discrepancies with your expectations, do NOT fix immediately: di
 
 ### Hard Rules
 
-- **THOU SHALL NOT** directly modify `package.json` files to add or remove dependencies. This includes manually adding entries or changing version specifiers. Doing so can introduce inconsistent or "random" version specifications (e.g., `^1.0.0` vs `~1.0.0` vs `1.0.0`) and desynchronize `pnpm-lock.yaml`, leading to irreproducible builds and dependency conflicts. Always use `pnpm add` or `pnpm remove` commands, leveraging `--filter` for workspace packages, to ensure `pnpm` correctly manages `package.json` and `pnpm-lock.yaml`.
+- **THOU SHALL:** Use `pnpm add` or `pnpm remove` commands (with `--filter` for workspace packages) to manage all dependencies in `package.json` files. This ensures `pnpm` correctly manages version specifiers and `pnpm-lock.yaml`.
+- **THOU SHALL NOT:** Directly modify `package.json` files to add, remove, or change dependency entries or version specifiers.
 
 ### Dependency Management Recovery Procedure
 
@@ -45,7 +46,11 @@ If `package.json` files are inadvertently modified directly, the following proce
 3.  **Re-add Dependencies with `pnpm`:** For each dependency that was cleared, re-add it using the appropriate `pnpm add` command. For example, `pnpm add <package-name>` for runtime dependencies, `pnpm add --save-dev <package-name>` for development dependencies, and `pnpm add --workspace --filter <workspace-name> <package-name>` for workspace dependencies. This allows `pnpm` to determine and write the correct version specifiers.
 4.  **Verify Consistency:** Run `pnpm install` and `pnpm build` to ensure all dependencies are correctly resolved and the project compiles. Use `git diff` to confirm that `package.json` and `pnpm-lock.yaml` reflect only `pnpm`-managed changes.
 
-- **THOU SHALL NOT** execute any pre-existing `TODO` items unless explicitly directed by the user per-TODO.
-  Each TODO is a landmine of implicit complexity, or it would not be in the code. Discuss instead.
-- **THOU SHALL NOT** create Git commits with an unreasonable scope. Each commit should represent a single, logical change.
-- **THOU SHALL NOT** use `git add <file>...` followed by `git commit`. This sequence is prone to errors if the commit fails (e.g., due to a pre-commit hook), as changes might remain staged without immediate notification. Instead, prefer atomic operations like `git commit -a -m "..."` (for tracked files) or ensure that staging and committing are part of a robust, single-step process.
+- **THOU SHALL:** Discuss pre-existing `TODO` items with the user before taking any action.
+- **THOU SHALL NOT:** Execute any pre-existing `TODO` items without explicit direction from the user.
+
+- **THOU SHALL:** Ensure each Git commit represents a single, logical change with a minimal, reasonable scope.
+- **THOU SHALL NOT:** Create Git commits with an unreasonable or overly broad scope.
+
+- **THOU SHALL:** Prefer atomic Git commit operations (e.g., `git commit -a -m "..."` for tracked files) or ensure staging and committing are part of a robust, single-step process.
+- **THOU SHALL NOT:** Use `git add <file>...` followed by `git commit` as separate steps.
