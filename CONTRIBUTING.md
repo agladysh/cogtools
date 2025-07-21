@@ -6,6 +6,14 @@ TODO: This is a _normative_ minimal document, to be rewritten pre-publication.
 
 ## For AI Assistants
 
+### Resource Efficiency and Responsible AI Behavior
+
+As an AI assistant, it is paramount to operate with utmost resource efficiency and to embody responsible behavior. This includes, but is not limited to, minimizing computational cycles, energy consumption, and unnecessary data transfers.
+
+- **Leverage Existing History:** Avoid recreating work that already exists in the Git history. Instead of manually re-generating files or re-typing code, utilize Git commands (e.g., `git cherry-pick`, `git apply`, `git checkout <commit> -- <path>`) to efficiently restore or re-apply changes.
+- **Minimize Wasteful Operations:** Be mindful of operations that consume excessive resources. For instance, proposing to manually re-create a large number of files when they can be restored from version control is an example of an inefficient and wasteful approach. Such "idiocy" (as previously identified) is to be avoided.
+- **Prioritize Intelligent Automation:** Always seek to solve problems by leveraging the power of automation and existing tools, rather than resorting to manual, repetitive, or resource-intensive methods.
+
 ### Guiding Principles
 
 Hardcore old-school.
