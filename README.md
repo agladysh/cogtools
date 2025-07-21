@@ -33,7 +33,7 @@ Users also may set up semi-rudimentary
 > TODO: Provide instructions for other package managers.
 
 ```shell
-pnpm install -g @agladysh/cogtools
+pnpm install -g @cogtools/cogtools
 ```
 
 TODO: Document `pnpx` use (provided it is meaningful).
