@@ -1,0 +1,19 @@
+{
+  "name": "@cogtools/lib",
+  "version": "1.0.0",
+  "description": "Shared library for metacognitive tooling components.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node ../../scripts/build.mjs src/index.ts dist/index.js",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "nunjucks": "^3.2.4",
+    "yargs": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/nunjucks": "^3.2.6",
+    "@types/yargs": "^17.0.32"
+  }
+}

@@ -1,24 +1,23 @@
 {
-  "// TODO": "Organize entries",
-  "name": "@agladysh/cogtools",
+  "name": "@cogtools/cogtools-monorepo",
   "version": "1.0.0",
-  "description": "Metacognitive Tooling Scaffolding for AI Agents",
+  "description": "Monorepo for Metacognitive Tooling Scaffolding for AI Agents",
   "engines": {
     "node": ">=20.0.0"
   },
   "type": "module",
-  "private": "true",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/agladysh/cogtools.git"
   },
   "keywords": [
-    "// TODO: Move to the main package",
-    "// TODO: Arbitrary. Write from scratch to be useful for cross-discovery",
     "gemini",
     "gemini-cli",
     "ai",
-    "metacognition"
+    "metacognition",
+    "tools",
+    "cli"
   ],
   "author": "Alexander Gladysh <agladysh@gmail.com>",
   "license": "MIT",
@@ -26,7 +25,8 @@
   "scripts": {
     "format": "prettier --write .",
     "lint": "eslint .",
-    "build": "pnpm -r build"
+    "build": "pnpm -r build",
+    "test": "pnpm -r test"
   },
   "devDependencies": {
     "@eslint/js": "^9.31.0",
@@ -37,10 +37,8 @@
     "eslint": "^9.31.0",
     "prettier": "^3.6.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.37.0"
-  },
-  "dependencies": {
-    "nunjucks": "^3.2.4",
-    "yargs": "^18.0.0"
+    "typescript-eslint": "^8.37.0",
+    "vitest": "^2.0.5",
+    "globals": "^15.8.0"
   }
 }
