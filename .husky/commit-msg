@@ -1,3 +1,25 @@
 #!/bin/sh
 
+# Run commitlint
 pnpm commitlint --config commitlint.config.cjs --edit $1
+
+# Get the exit status of commitlint
+exit_status=$?
+
+# Check if commitlint failed
+if [ $exit_status -ne 0 ]; then
+  echo "------------------------------------------------------------"
+  echo "ERROR: Commit message validation failed."
+  echo ""
+  echo "The commit was NOT created because the commit message"
+  echo "does not comply with the repository's standards."
+  echo ""
+  echo "Please correct the commit message using the available tools and"
+  echo "attempt a regular commit ('git commit') again."
+  echo "DO NOT use 'git commit --amend'."
+  echo "------------------------------------------------------------"
+  exit 1 # Ensure the hook fails and the commit is aborted
+fi
+
+# If commitlint succeeded, the hook exits with status 0 and the commit proceeds.
+exit 0
