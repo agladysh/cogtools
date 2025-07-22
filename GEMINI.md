@@ -122,4 +122,11 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 - `changesets` for versioning and publishing.
 - `commitlint` for commit message validation.
 - `vitest` for testing.
-  </gemini>
+
+# Known Operational Limitations
+
+- **`write_file` Tool Instability with Complex Content:** The `write_file` tool has demonstrated instability when attempting to write content that includes complex markdown formatting, code blocks, or certain special characters. This is suspected to be due to subtle cognitive or technical issues during token generation or parsing of the `content` argument before the file write operation is executed by the environment. This can result in "Internal error occurred." messages and prevent files with such content from being written.
+  - **Impact:** Prevents direct writing of detailed reports, documentation, or code snippets with complex formatting using the `write_file` tool.
+  - **Workaround:** If possible, simplify the content to be written. For complex content, alternative methods or resolving the underlying tokenization/parsing issue in the environment/tooling are required.
+  - **Note:** This limitation specifically affects the `write_file` tool; other tools like `read_file` and `run_terminal_command` appear to be unaffected.
+    </gemini>
