@@ -27,7 +27,7 @@
     "format:check": "prettier --check .",
     "format": "pnpm format:fix",
     "lint": "eslint .",
-    "build": "pnpm -r build",
+    "build": "pnpm -r build && pnpm --filter @cogtools/lib run build:types",
     "test": "pnpm -r test",
     "clean": "rm -rf packages/*/dist packages/*/node_modules",
     "typecheck": "tsc --noEmit",

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "node ../../scripts/build.mjs src/index.ts dist/index.js",
-    "test": "vitest"
+    "test": "vitest",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist"
   },
   "dependencies": {
     "nunjucks": "^3.2.4",
