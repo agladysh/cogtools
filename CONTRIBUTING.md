@@ -103,6 +103,8 @@ Our pre-commit hook (`pnpm precommit`) is designed to enforce code quality _befo
 
 ### 5. Changeset Management
 
+**Note:** The `pnpm changeset add` command is currently non-operational in this AI environment when used non-interactively due to issues with handling interactive prompts.
+
 We use Changesets to manage versioning and changelogs across our monorepo.
 
 - **Creating a Changeset:** When you complete a logical change (feature, fix, chore), run `pnpm changeset` (or `npx changeset`) to create a new changeset file. This file describes the change, its impact (major, minor, patch), and which packages it affects.
