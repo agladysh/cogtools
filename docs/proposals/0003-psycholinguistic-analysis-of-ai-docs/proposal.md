@@ -6,9 +6,9 @@
 
 This document proposes a structured, multi-stage project to perform a full-range psycholinguistic analysis of the existing AI-facing documentation within this repository. The current documentation, while functional, has evolved organically. It contains valuable, hard-won knowledge, but its structure and language reflect a reactive process, essentially forming "scar tissue" around areas where an AI's System 1 (intuitive, fast, unconscious) thinking is prone to failure.
 
-The primary goal is to deconstruct, analyze, and then consciously re-engineer this documentation. We will transform it from a collection of reactive warnings and directives into a proactive, coherent, and cognitively-aligned guidance system for AI agents. This will enhance AI performance, reduce errors, and create a more robust and predictable human-AI development partnership.
+This proposal is the first phase in a larger, multi-stage effort to overhaul the project's AI-facing documentation, as outlined in the `TODO.md` file. Its primary goal is to deconstruct, analyze, and then consciously re-engineer this documentation. We will transform it from a collection of reactive warnings and directives into a proactive, coherent, and cognitively-aligned guidance system for AI agents. This will enhance AI performance, reduce errors, and create a more robust and predictable human-AI development partnership.
 
-This proposal strictly covers the definition of goals, scope, and methodology for the analysis. The analysis itself, and the subsequent implementation of its findings, will be conducted in separate, dedicated work sessions to ensure objectivity and rigor.
+This proposal strictly covers the definition of goals, scope, and methodology for the analysis phase. The output of this phase (`report.md`) will serve as the foundational input for subsequent proposals (e.g., Proposal 0004), which will _propose_ the actual overhaul and integration of the findings into the project's living documentation system. The _execution of this analysis_ will be conducted in a dedicated work session to ensure objectivity and rigor; the _implementation of the overhaul based on its findings_ is explicitly out of scope for this proposal.
 
 ## 2. Goals & Objectives
 
@@ -94,34 +94,39 @@ The analysis will be conducted in three distinct, interdependent phases. This st
 
 **Excitement Gateway:** The "Failure Catalogue" and the initial "Cognitive Model" are the direct, tangible results of your detective work. Their accuracy and insightfulness are a direct measure of how well you collected and interpreted the clues in Phase 1. This model is the blueprint for the final, most creative phase.
 
-### 5.3. Phase 3: Strategic Framework Construction (The "Solution")
+### 5.3. Phase 3: Strategic Framework Construction (The "Strategic Blueprint")
 
-**Objective:** To use the evidence-based "Case" from Phase 2 to construct the final, high-level "Solution"—a robust framework for all future AI-facing documentation.
+**Objective:** To use the evidence-based "Case" from Phase 2 to construct the final, high-level "Strategic Blueprint"—a robust framework for all future AI-facing documentation.
 
 - **Process:**
   1.  **Principle Distillation:** Based on the validated "Failure Catalogue," distill a set of core principles for effective AI communication (e.g., "Principle of Positive Framing," "Principle of Explicit Rationale"). Each principle must directly address a category of failures identified in Phase 2.
   2.  **Develop the AI-Facing Documentation Style Guide:** Create the concrete **AI-Facing Documentation Style Guide**. This is the practical application of your distilled principles, providing the essential guidelines (vocabulary, templates, tone) needed to write effective AI-facing documentation.
   3.  **Create a Rewrite Plan:** Propose a high-level plan for refactoring the in-scope documents using the new Style Guide. This plan is the bridge from analysis to action, and it represents the culmination of the entire forensic process.
 
-## 5. Deliverables
+## 6. Deliverables
 
-The sole deliverable for this task will be a `report.md` file located in the same directory as this proposal (`docs/proposals/0003-psycholinguistic-analysis-of-ai-docs/`).
+This proposal will produce two distinct deliverables, ensuring clear separation between the analytical findings and the preliminary, actionable guidelines derived from them. Both deliverables will be located in the same directory as this proposal (`docs/proposals/0003-psycholinguistic-analysis-of-ai-docs/`).
 
-The report will contain two distinct but complementary sections:
+1.  **`report.md`**: This document will serve as the comprehensive, static record of the psycholinguistic analysis. It is a formal output of this analytical phase and will serve as the foundational input for subsequent proposals (e.g., Proposal 0004), which will _propose_ the actual overhaul and integration of the findings into the project's living documentation system.
 
-**Part A: The Psycholinguistic Analysis Report** (The Analytical Foundation)
+    The `report.md` will contain the following sections:
+    - **The Psycholinguistic Analysis Report** (The Analytical Foundation):
+      - A detailed summary of the findings from all three analysis phases.
+      - The "Failure Catalogue" mapping linguistic patterns to AI failure modes.
+      - The explicit Cognitive Model of the AI implied by the documentation.
+      - A high-level strategic overview for the documentation overhaul, derived from the analysis.
 
-1.  A detailed summary of the findings from all three analysis phases.
-2.  The "Failure Catalogue" mapping linguistic patterns to AI failure modes.
-3.  The explicit Cognitive Model of the AI implied by the documentation.
+2.  **`preliminary-ai-guidelines.md`**: This new Markdown file will contain the derived principles and preliminary guidelines for AI-facing documentation. It is a provisional draft, intended to inform subsequent phases, and is not a living document at this stage.
 
-**Part B: The AI-Facing Documentation Style Guide** (The Practical Application) 4. **The AI-Facing Documentation Style Guide:** A concise, practical guide derived from the analysis, providing actionable principles and examples for writing effective AI-facing documentation. This guide will serve as a living document, intended to evolve with the AI's capabilities and the project's needs. 5. The high-level plan for rewriting the documentation based on the principles outlined in the Style Guide.
+    The `preliminary-ai-guidelines.md` will contain:
+    - A provisional draft of the **AI-Facing Documentation Style Guide**. This section will present the concise, practical principles and examples for writing effective AI-facing documentation, derived from the analysis.
+    - A high-level plan for rewriting the documentation based on the principles outlined in the Style Guide draft.
 
-## 6. Next Steps
+## 7. Next Steps
 
 Upon approval of this proposal, the next step will be to initiate a separate session dedicated to executing the analysis as described in the Methodology section.
 
-## 7. Final Summary: The Order of Operations
+## 8. Final Summary: The Order of Operations
 
 To ensure clarity and guard against cognitive drift, the execution of this analysis must adhere to the following summary mandate.
 
