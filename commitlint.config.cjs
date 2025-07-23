@@ -1,6 +1,9 @@
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
-    'subject-case': [2, 'never', ['start-case', 'pascal-case', 'upper-case']],
+    // We are striving for a reasonable set of rules that are making LLM generation more friendly.
+    // Disabling 'subject-case' to allow more flexibility in commit message subjects.
+    'subject-case': [0, 'always', []],
+    'body-max-line-length': [0, 'always', []],
   },
 };
