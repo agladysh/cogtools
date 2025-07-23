@@ -100,20 +100,22 @@ The analysis will be conducted in three distinct, interdependent phases. This st
 
 - **Process:**
   1.  **Principle Distillation:** Based on the validated "Failure Catalogue," distill a set of core principles for effective AI communication (e.g., "Principle of Positive Framing," "Principle of Explicit Rationale"). Each principle must directly address a category of failures identified in Phase 2.
-  2.  **Develop a Style Guide:** Create a concrete style guide for AI-facing documentation. This is the practical application of your distilled principles. Every rule in this guide must be justified by the findings from the previous phases.
-  3.  **Create a Rewrite Plan:** Propose a high-level plan for refactoring the in-scope documents. This plan is the bridge from analysis to action, and it represents the culmination of the entire forensic process.
+  2.  **Develop the AI-Facing Documentation Style Guide:** Create the concrete **AI-Facing Documentation Style Guide**. This is the practical application of your distilled principles, providing the essential guidelines (vocabulary, templates, tone) needed to write effective AI-facing documentation.
+  3.  **Create a Rewrite Plan:** Propose a high-level plan for refactoring the in-scope documents using the new Style Guide. This plan is the bridge from analysis to action, and it represents the culmination of the entire forensic process.
 
 ## 5. Deliverables
 
 The sole deliverable for this task will be a `report.md` file located in the same directory as this proposal (`docs/proposals/0003-psycholinguistic-analysis-of-ai-docs/`).
 
-The report will contain:
+The report will contain two distinct but complementary sections:
+
+**Part A: The Psycholinguistic Analysis Report** (The Analytical Foundation)
 
 1.  A detailed summary of the findings from all three analysis phases.
 2.  The "Failure Catalogue" mapping linguistic patterns to AI failure modes.
 3.  The explicit Cognitive Model of the AI implied by the documentation.
-4.  The complete Psycholinguistic Framework and Style Guide.
-5.  The high-level plan for rewriting the documentation.
+
+**Part B: The AI-Facing Documentation Style Guide** (The Practical Application) 4. **The AI-Facing Documentation Style Guide:** A concise, practical guide derived from the analysis, providing actionable principles and examples for writing effective AI-facing documentation. This guide will serve as a living document, intended to evolve with the AI's capabilities and the project's needs. 5. The high-level plan for rewriting the documentation based on the principles outlined in the Style Guide.
 
 ## 6. Next Steps
 
@@ -169,7 +171,3 @@ The initial user request was to "generate a robust proposal on performing full-r
 - **Observation:** The user requested a final, distilled summary to reinforce the core instructions.
 - **Diagnosis:** Even with the reframed methodology, the document was becoming long. A final, concise summary was needed to act as a cognitive anchor and a quick reference to prevent deviation during the actual execution of the task.
 - **Correction:** The "Final Summary: The Order of Operations" section was added. This serves as a final, top-of-mind checklist for the executing agent, summarizing the mission, persona, and exact sequence of operations.
-
-### Conclusion
-
-The evolution of this document demonstrates a live, collaborative process of identifying and correcting for an AI's inherent cognitive biases. It moved from a simple task list to a sophisticated, hardened proposal that actively anticipates and mitigates likely failure modes. This very process validates the core premise of the proposal: that understanding and shaping the cognitive context of an AI is paramount to achieving reliable and high-quality outcomes.
