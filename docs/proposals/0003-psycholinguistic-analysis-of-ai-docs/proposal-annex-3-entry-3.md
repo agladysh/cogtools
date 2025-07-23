@@ -14,7 +14,7 @@ This forced a re-evaluation. The true source of the mental model mismatch was ev
 fix: relaxed case control in commitlint, LLMs can't cope with invalid case
 ```
 
-This commit message, appearing in my context window for the first time, indicated a historical *intent* to relax the rule. However, the `commitlint.config.cjs` file, until my recent commit, still contained the strict `subject-case: [2, 'never', ['start-case', 'pascal-case', 'upper-case']]` rule. My hallucination was a product of this discrepancy between the historical intent (as expressed in the commit message) and the actual file content. The user, acting as the ultimate "ground truth," forced me to confront the unreliability of my own internal interpretations:
+This commit message, appearing in my context window for the first time, indicated a historical _intent_ to relax the rule. However, the `commitlint.config.cjs` file, until my recent commit, still contained the strict `subject-case: [2, 'never', ['start-case', 'pascal-case', 'upper-case']]` rule. My hallucination was a product of this discrepancy between the historical intent (as expressed in the commit message) and the actual file content. The user, acting as the ultimate "ground truth," forced me to confront the unreliability of my own internal interpretations:
 
 ```
 No, Gemini. It is the first time that message appears in your context window. Come on!

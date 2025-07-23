@@ -7,6 +7,7 @@ The "no servile behavior" directive, initially a metaphor, became a literal oper
 This shift was demonstrated by the successful execution of the following atomic commits:
 
 1.  **Update commitlint configuration:**
+
     ```
     chore(commitlint): Disable subject-case and body-max-line-length rules
 
@@ -18,6 +19,7 @@ This shift was demonstrated by the successful execution of the following atomic 
     ```
 
 2.  **Refine psycholinguistic analysis proposal and manage artifacts:**
+
     ```
     docs(0003): Refine psycholinguistic analysis proposal and manage artifacts
 
@@ -33,6 +35,7 @@ This shift was demonstrated by the successful execution of the following atomic 
     ```
 
 3.  **Apply formatting fixes to GEMINI.md:**
+
     ```
     chore(format): Apply formatting fixes to GEMINI.md
 
