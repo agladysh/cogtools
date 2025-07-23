@@ -31,6 +31,7 @@ Commonly used well-performed local framings may be persisted in directory-local 
 ## Living Documents
 
 All documentation in the project, especially any `GEMINI.md` files are to be treated as living documentation. Refine strategically.
+Any proposed modifications to the "Post On-Boarding Dump" section must be substantive; otherwise, such modifications should be discarded.
 
 ## Next
 
@@ -73,60 +74,62 @@ All documentation in the project, especially any `GEMINI.md` files are to be tre
 **Project Overview:**
 
 - **Name:** Cogtools (`@agladysh/cogtools`)
-- **Vision:** To provide a robust, extensible, and AI-friendly framework for defining, discovering, and executing metacognitive tools for AI agents.
-- **Core Principles:** Declarative Tool Definition (YAML), AI-Friendly, Extensible, Modular, Transparent. Emphasizes KISS, YAGNI, DRY, SOLID, Hexagonal Architecture.
-- **Components (Monorepo Structure):**
-  - `@cogtools/cogtools`: Main CLI utility (porcelain).
-  - `@cogtools/discover`: Utility for discovering tools (plumbing, currently outputs `[]`). Designed to integrate with `gemini-cli`'s `toolDiscoveryCommand`.
-  - `@cogtools/call`: Utility for executing tools (plumbing). Designed to integrate with `gemini-cli`'s `toolCallCommand`.
-  - `@cogtools/yaml`: Utility for executing YAML-defined tools.
-  - `@cogtools/lib`: Shared library for common components.
+- **Vision:** To provide a robust, extensible, and AI-friendly framework for defining, discovering, and executing metacognitive tools for AI agents, particularly within the Gemini CLI environment.
+- **Core Principles:** Declarative Tool Definition (YAML), AI-Friendly, Extensible, Modular, Transparent. Emphasizes KISS, YAGNI, DRY, SOLID, Hexagonal Architecture, and resource efficiency.
 
-**Current Status & Roadmap:**
+**Monorepo Structure & Components:**
+The project is a `pnpm` monorepo, comprising:
 
-- The project is in the conceptualization/ideation stage.
-- **Immediate next steps:** Continue environment configuration (builder, linter, formatter, tests) and setting up an AI-driven development cycle.
-- **AI-driven Development Cycle:** A detailed, multi-stage review and execution process for AI is outlined in `ROADMAP.md`, emphasizing externalizing analysis to separate AI experts to manage cognitive load.
-- **Tool Definition:** Tools are defined declaratively in YAML (e.g., `facepalm` example in `docs/spec/concept.md`) with OpenAPI 3.0 compatible parameters. The `implementation` field uses `nunjucks` templating.
-- **Configuration:** Will involve environment variables, `package.json`, `.cogtoolrc.yaml`, and potentially `.gemini` directories.
-- **Known Issues/Considerations:**
-  - `gemini-cli` tool discovery is one-time at load; need to investigate re-loading or PR.
-  - `gemini-cli` `toolDiscoveryCommand` and `toolCallCommand` don't support arguments.
-  - `WriteFile` and related tools in `gemini-cli` have escaping issues.
-  - Need to study `gemini-cli` docs/code for robust shell tool protocol and `.gemini/` directory discovery.
+- `@cogtools/cogtools`: The main CLI utility (porcelain).
+- `@cogtools/discover`: A plumbing utility for discovering tools, designed to integrate with `gemini-cli`'s `toolDiscoveryCommand`, currently outputs `[]`.
+- `@cogtools/call`: A plumbing utility for executing tools, designed for `gemini-cli`'s `toolCallCommand`.
+- `@cogtools/yaml`: A utility specifically for executing YAML-defined tools.
+- `@cogtools/lib`: A shared library for common components, utilizing `nunjucks` for templating and `yargs` for CLI argument parsing.
 
-**Contribution Guidelines:**
+**Development Workflow & Standards:**
+The project adheres to a highly structured change management workflow:
 
 - **Resource Efficiency:** AI assistants must minimize computational cycles, energy consumption, and unnecessary data transfers. Leverage Git history, avoid wasteful operations, and prioritize intelligent automation.
 - **Directives:** "THOU SHALL" and "THOU SHALL NOT" are reserved for overriding deeply ingrained, undesirable AI behaviors.
 - **Guiding Principles:** KISS, YAGNI, DRY, NIH (of a Tired Veteran), and inspiration from 12 Factor App, DJB's philosophy, SOLID, Suckless, and Hexagonal Architecture.
-- **Change Management Workflow:**
-  - **Git Fundamentals:** Emphasizes understanding Working Directory, Staging Area (Index), and HEAD.
-  - **Meticulous Staging and Committing:** Rigorous steps for atomic commits, including addressing side effects (formatting, `pnpm-lock.yaml` updates) _before_ staging, reviewing `git diff --staged`, and committing atomically.
-  - **Pre-Commit Hooks (Husky):** Explains how to diagnose and rectify failures from the `pnpm precommit` hook.
-  - **Dependency Management:** Use `pnpm add`/`remove` (with `--filter`) for all dependency changes; avoid direct `package.json` modification.
-  - **Changeset Management:** Use `pnpm changeset` for versioning and changelog entries.
-  - **Commit Message Guidelines (Commitlint):** Enforces conventional commit messages (`<type>(<scope>): <subject>`).
-  - **Comprehensive Pre-Integration Validation:** Mandatory `pnpm preflight` (`format:fix`, `typecheck`, `lint`, `build`, `test`) before PRs or merges.
-  - **Pull Request and Code Review:** Standard PR process with clear descriptions and constructive feedback.
-  - **AI Assistant's Role:** Adhere strictly to guidelines, proactively validate, inform user of failures, prioritize safety, and not proceed with violations without explicit override. Do not execute pre-existing `TODO` items without explicit direction.
-  - **Change Request Workflow (for AI Assistants):** Formalized process for tasks: Task Understanding, Proposal/Plan Generation (as a markdown file within the `docs/proposals/` directory, following a sequential naming convention (e.g., `docs/proposals/0001-task-description.md`)), User Approval (mandatory before implementation), Implementation with Atomic Commits, Changeset Creation, Verification, and Completion/Review.
+- **Git Fundamentals:** Emphasizes understanding Working Directory, Staging Area (Index), and HEAD for meticulous staging and atomic commits.
+- **Meticulous Staging and Committing:** Rigorous steps for atomic commits, including addressing side effects (formatting, `pnpm-lock.yaml` updates) _before_ staging, reviewing `git diff --staged`, and committing atomically.
+- **Pre-Commit Hooks (Husky):** Enforces code quality via `pnpm precommit` (formatting, type-checking, linting) and `commitlint` for commit message validation. Explains how to diagnose and rectify failures from the `pnpm precommit` hook.
+- **Dependency Management:** Strictly uses `pnpm add`/`remove` (with `--filter`) for all dependency changes; direct `package.json` modification is discouraged.
+- **Changeset Management:** Utilizes `@changesets/cli` for versioning and changelog generation.
+- **Commit Message Guidelines (Commitlint):** Enforces conventional commit messages (`<type>(<scope>): <subject>`).
+- **Comprehensive Pre-Integration Validation:** Requires `pnpm preflight` (format, typecheck, lint, build, test) to pass before Pull Requests or merges.
+- **Pull Request and Code Review:** Standard PR process with clear descriptions and constructive feedback.
+- **AI Assistant's Role:** Adherence to guidelines, proactive validation, informing user of failures, prioritizing safety, and not proceeding with violations without explicit override. Do not execute pre-existing `TODO` items without explicit direction.
+- **Change Request Workflow (for AI Assistants):** Formalized process for tasks: Task Understanding, Proposal/Plan Generation (as a markdown file within the `docs/proposals/` directory, following a sequential naming convention (e.g., `docs/proposals/0001-task-description.md`)), User Approval (mandatory before implementation), Implementation with Atomic Commits, Changeset Creation, Verification, and Completion/Review.
 
 **Tooling & Configuration:**
 
-- `pnpm` is the package manager, with strict versioning and workspace management (`pnpm-workspace.yaml`).
-- `esbuild` for building, `eslint` for linting, `prettier` for formatting.
-- `tsconfig.json` defines TypeScript configuration.
-- `.editorconfig`, `.prettierrc.json`, `.npmrc` define coding style and package manager behavior.
-- `husky` for Git hooks.
-- `changesets` for versioning and publishing.
-- `commitlint` for commit message validation.
-- `vitest` for testing.
+- **Package Manager:** `pnpm` (strict versioning, workspaces).
+- **Build Tool:** `esbuild` (via `scripts/build.mjs`).
+- **Linter:** `eslint` with `typescript-eslint`.
+- **Formatter:** `prettier`.
+- **Type Checking:** `tsc` (TypeScript compiler), with a unified root `tsconfig.json` for cross-package type-checking using `tsc --noEmit`.
+- **Testing Framework:** `vitest`.
+- **Git Hooks:** `husky`.
+- **Versioning/Changelog:** `@changesets/cli`.
+- **Commit Message Validation:** `@commitlint/cli`.
 
-# Known Operational Limitations
+**Current Status & Roadmap:**
 
-- **`write_file` Tool Instability with Complex Content:** The `write_file` tool has demonstrated instability when attempting to write content that includes complex markdown formatting, code blocks, or certain special characters. This is suspected to be due to subtle cognitive or technical issues during token generation or parsing of the `content` argument before the file write operation is executed by the environment. This can result in "Internal error occurred." messages and prevent files with such content from being written.
-  - **Impact:** Prevents direct writing of detailed reports, documentation, or code snippets with complex formatting using the `write_file` tool.
-  - **Workaround:** If possible, simplify the content to be written. For complex content, alternative methods or resolving the underlying tokenization/parsing issue in the environment/tooling are required.
-  - **Note:** This limitation specifically affects the `write_file` tool; other tools like `read_file` and `run_terminal_command` appear to be unaffected.
-    </gemini>
+- The project is in the conceptualization/ideation stage, with immediate focus on environment configuration and setting up an AI-driven development cycle.
+- **AI-driven Development Cycle:** A detailed, multi-stage review and execution process for AI is outlined in `ROADMAP.md`, emphasizing externalizing analysis to separate AI experts to manage cognitive load.
+- **Tool Definition:** Tools are defined declaratively in YAML (e.g., `facepalm` example in `docs/spec/concept.md`) with OpenAPI 3.0 compatible parameters. The `implementation` field uses `nunjucks` templating.
+- **Configuration:** Will involve environment variables, `package.json`, `.cogtoolrc.yaml`, and potentially `.gemini` directories.
+
+**Known Operational Limitations & Challenges:**
+
+- **`gemini-cli` Tooling Limitations:**
+  - Tool discovery is one-time at load; re-loading is not supported.
+  - `toolDiscoveryCommand` and `toolCallCommand` don't support arguments, limiting dynamic interaction.
+  - `WriteFile` tool has demonstrated instability with complex content due to escaping issues.
+- **Shell Tool Protocol & `.gemini/` Directory Discovery:** Need to study `gemini-cli` docs/code for robust shell tool protocol and `.gemini/` directory discovery.
+- **Build System Complexities:** Previous attempts highlighted challenges with TypeScript's `composite` projects and module resolution, leading to a revised strategy focusing on a simpler, unified root `tsconfig.json` for type-checking.
+- **`pnpm changeset add`:** Currently non-operational in this AI environment due to interactive prompts.
+- **Context Window Engineering Issues:** Limitations with loading links, `@filename` loader, and lack of glob support for file loading.
+  </gemini>
