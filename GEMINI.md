@@ -81,7 +81,7 @@ Any proposed modifications to the "Post On-Boarding Dump" section must be substa
 The project is a `pnpm` monorepo, comprising:
 
 - `@cogtools/cogtools`: The main CLI utility (porcelain).
-- `@cogtools/discover`: A plumbing utility for discovering tools, designed to integrate with `gemini-cli`'s `toolDiscoveryCommand`, currently outputs `[]`.
+- `@cogtools/discover`: A plumbing utility for discovering tools, designed to integrate with `gemini-cli`'s `toolDiscoveryCommand`.
 - `@cogtools/call`: A plumbing utility for executing tools, designed for `gemini-cli`'s `toolCallCommand`.
 - `@cogtools/yaml`: A utility specifically for executing YAML-defined tools.
 - `@cogtools/lib`: A shared library for common components, utilizing `nunjucks` for templating and `yargs` for CLI argument parsing.
