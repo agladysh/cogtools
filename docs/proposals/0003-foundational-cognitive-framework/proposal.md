@@ -110,6 +110,7 @@ This proposal, upon approval, will lead to the **iterative creation** of the fol
     - The analysis of the 4H-F§7 architecture as the formal basis for the project's guiding principles.
     - The Decommissioning Plan for the old AI-facing documentation.
     - The proposal for the formal integration of `framework.md`.
+    - **Post-Integration Cleanup:** A final step to delete the `attachments` directory within `docs/proposals/0003-foundational-cognitive-framework/` to prevent memetic burden and ensure cognitive hygiene.
 
 ## 6. Next Steps
 
