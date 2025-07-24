@@ -64,7 +64,7 @@ parameters:
 
 examples:
   - facepalm: I did not apologize to the user
-    what_happened: I utterly failed, my behavior has no execuse
+    what_happened: I utterly failed, my behavior has no excuse
     but_really: |
       In peer environment, mistakes are expected, and apologies are redundant.
       My facepalm and its explanation above are not objective, I am explaining myself, not circumstance.
@@ -73,7 +73,7 @@ examples:
     next: Consult `facepalm` tool documentation carefully and call it again.
 
   - facepalm: We didn't test optional `remarks` field
-    what_happened: Above example has no `remarks` field
+    what_happened: The above example has no `remarks` field
     but_really: While we need to test it, it is actually hard to come up with a valid didactic case
     therefore: This example is not didactic, but technical
     next: It is merely a test case, no next action
@@ -133,6 +133,8 @@ NB: All utilities should support idiomatic set of commands and options (e.g. `--
 
 Computes and outputs tool schema for PWD, as per the Gemini CLI. Outputs JSON to stdout.
 
+Tools are resolved from the current working directory (PWD).
+
 Usage: `cogtools-discover [--yaml]`
 
 Options:
@@ -144,6 +146,8 @@ Error-handling: TODO TBD.
 ### `cogtools-call`
 
 Calls the specified tool, resolving it from the provided tool name and PWD. Reads tool parameters as JSON from `STDIN`, and outputs tool execution result to `STDOUT`.
+
+Input must match the tool’s parameter schema.
 
 Usage: `echo '<tool-parameters>' | cogtools-call [--verbose] [--yaml] <tool-name>`
 
@@ -159,6 +163,8 @@ Error-handling: TODO TBD.
 Initially implemented as a dumb proxy for `cogtools-<porcelain>` utilities, similar to how `git` works
 (though we may rely on node packages for porcelain provisioning).
 
+Porcelain commands are dynamically resolved from installed node_modules.
+
 Usage: `cogtools <porcelain> [porcelain arguments]`
 
 Additionally implements idiomatic `help [porcelain]` command.
@@ -173,9 +179,26 @@ TODO: Refine scope and functionality of the tool beyond basics.
 - Project-Home-System `.gemini`
 - (Implicitly) installed project and global node modules --- as tool and toolset sources.
 
+### .cogtoolrc.yaml (example)
+
+```yaml
+tool_sources:
+  - local: ./tools
+  - node_modules
+env_priority: project
+```
+
 ## Ideation Sink
 
 ### Setup
+
+Non-interactive initialization is prioritized:
+
+```bash
+cogtools init --non-interactive --defaults
+```
+
+Interactive modes will follow in v2.
 
 TODO: Ideally should be something like the following:
 
@@ -192,3 +215,17 @@ However, interactive mode is a third-tier priority.
 - Auto-injection of tool table into project's GEMINI.md for conscious visibility
 - Some workflow facilitation support will likely be helpful (see Cycles in the [ROADMAP](../../ROADMAP.md)), but that's a next step, after we will get the thing up and running.
   Perhaps our porcelain command would interface with `package.json` structure nicely.
+
+### Input from DeepSeek
+
+Schema Sugar vs. Verbosity:
+
+"Ad-hoc YAML sugar risks documentation debt. Propose strict OpenAPI 3.0 compliance with a linter."
+
+Error Handling:
+
+"Define standard error codes for cogtools-call (e.g., TOOL_NOT_FOUND, SCHEMA_VIOLATION)."
+
+.env Precedence:
+
+"Recommend project .env overrides system ENV unless --system-env flag is set."
