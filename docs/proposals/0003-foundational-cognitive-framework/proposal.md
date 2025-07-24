@@ -101,7 +101,7 @@ The methodology is not one of forensic analysis, but of axiomatic derivation and
 
 This proposal, upon approval, will lead to the **iterative creation** of the following artifacts within the `docs/proposals/0003-foundational-cognitive-framework/` directory. These are the deliverables of the **implementation phase**, not this proposal itself.
 
-1.  **`GEMINI.md` (Draft):** The new, radically simplified declaration of AI principle and identity.
+1.  **`GEMINI.md` (Bridge/Draft):** A temporary, radically simplified declaration of AI principle and identity, serving as a bridge until the full framework-aligned `GEMINI.md` is developed. (Already created as part of this session's context management.)
 2.  **`CONTRIBUTING.md` (Draft):** The new, unified guide for collaboration.
 3.  **`report.md` (Draft):** This document will contain:
     - The full set of derived Core Axioms from `framework.md`.
