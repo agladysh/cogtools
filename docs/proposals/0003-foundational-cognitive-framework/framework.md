@@ -1,61 +1,82 @@
-# The General Framework (F)
+# The Universal Framework (F)
 
-0. Seed
+A minimal universal internal language
 
-   Fix a small Grothendieck site whose underlying category is the nerve 𝒩 of a strict ω-groupoid. Inside the topos 𝓣 = Sh(𝒩) declare a single primitive: a 4-Hochschild cocycle 𝓤 with d⁴𝓤 = 0. Nothing else is postulated.
+## Remark (minimality)
 
-1. Immanent fields
-   - The universal immanent 4-H-field is 𝓤 itself.
-   - Every local immanent field is an object 𝓒 in the internal lattice Sub(𝓤); embeddings nest arbitrarily deep while remaining inside 𝓣.
+Any ∞-topos satisfying axioms 0–9 together with the external clause M0 is uniquely equivalent to the one above; relaxing or adding an internal axiom breaks at least one of F§7, F§8, or F§9.
 
-2. Non-neutral access
+## Axioms
 
-   A Lawvere–Tierney topology j : Ω → Ω is defined by
+### F§0. Seed
 
-   j(U) = the least j-closed sub-object containing U.
+Fix a small Grothendieck site whose underlying category is the nerve 𝒩 of a strict ω-groupoid. Inside the topos 𝓣 = Sh(𝒩) declare a single primitive: a 4-Hochschild cocycle 𝓤 with d⁴𝓤 = 0. Nothing else is postulated.
 
-   Every access morphism therefore modifies the field.
+### F§1. Immanent fields
 
-3. Convolution monoid
-   Convolution is the internal product
+- The universal immanent 4-H-field is 𝓤 itself.
+- Every local immanent field is an object 𝓒 in the internal lattice Sub(𝓤); embeddings nest arbitrarily deep while remaining inside 𝓣.
 
-   𝓒₁ \* 𝓒₂ := 𝓒₁ ×_𝓤 𝓒₂.
+### F§2. Non-neutral access
 
-   Day convolution supplies an associative unitor; the unit object is 𝓤.
+A Lawvere–Tierney topology j : Ω → Ω is defined by
 
-4. Agape-aletheic decision
+j(U) = the least j-closed sub-object containing U.
 
-   A decision morphism d : 𝓒 → 𝓤 is chosen (up to coherent isomorphism) to minimise
+Every access morphism therefore modifies the field.
 
-   Kq(𝓒) = (1−q)·rank H⁴(𝓒) + q·log|𝒮𝓒|,
+### F§3. Convolution monoid
 
-   where q ∈ Ω is the single global parameter and |𝒮𝓒| is the minimal internal description length relative to the chosen cover.
+Convolution is the internal product
 
-5. Domains and transfer
-   - A domain is an epimorphism 𝒰 ↠ 𝒩 in 𝓣.
-   - Transfer between domains is given by a refinement morphism r : 𝒰 → 𝒱; pullbacks transport d while q remains unchanged.
+𝓒₁ \* 𝓒₂ := 𝓒₁ ×_𝓤 𝓒₂.
 
-6. Hofstadterian H-quartet
-   - Holographic – locality via Sh(𝒩).
-   - Holonymic – whole/part expressed by Sub(𝓤).
-   - Holonomic – flatness encoded by d⁴𝓤 = 0.
-   - Holarchic – self-modification via the internal Y-combinator.
+Day convolution supplies an associative unitor; the unit object is 𝓤.
 
-7. Efficiency guarantee
+### F§4. Agape-aletheic decision
 
-   For any finite refinement chain 𝓙₀ → … → 𝓙α the telescoping cost
+A decision morphism d : 𝓒 → 𝓤 is chosen (up to coherent isomorphism) to minimise
 
-   Σ cost(ri) ≤ log|𝒮𝓙₀| − log|𝒮_d|
+Kq(𝓒) = (1−q)·rank H⁴(𝓒) + q·log|𝒮𝓒|,
 
-   is internally finite and pre-computable from K_q.
+where q ∈ Ω is the single global parameter and |𝒮𝓒| is the minimal internal description length relative to the chosen cover.
 
-8. Reflexive stability
+### F§5. Domains and transfer
 
-   iterⁿ(reconstruction) = reconstruction for every internally accessible ordinal n, witnessed by the identity arrow 1 → Ω.
+- A domain is an epimorphism 𝒰 ↠ 𝒩 in 𝓣.
+- Transfer between domains is given by a refinement morphism r : 𝒰 → 𝒱; pullbacks transport d while q remains unchanged.
 
-9. External-rule count: 0.
+### F§6. Hofstadterian H-quartet
 
-A. Courtesy embedding (internal derivation)
+- Holographic – locality via Sh(𝒩).
+- Holonymic – whole/part expressed by Sub(𝓤).
+- Holonomic – flatness encoded by d⁴𝓤 = 0.
+- Holarchic – self-modification via the internal Y-combinator.
+
+### F§7. Efficiency guarantee
+
+For any finite refinement chain 𝓙₀ → … → 𝓙α the telescoping cost
+
+Σ cost(ri) ≤ log|𝒮𝓙₀| − log|𝒮_d|
+
+is internally finite and pre-computable from K_q.
+
+### F§8. Reflexive stability
+
+iterⁿ(reconstruction) = reconstruction for every internally accessible ordinal n, witnessed by the identity arrow 1 → Ω.
+
+### F§9. External-rule count
+
+External-rule count: 0.
+
+## Gödel reflection (meta-parsimonious)
+
+Let M0 assert that 𝓤 is the curvature-obstruction cocycle of a single
+∞-connection on a 5-graded complex; convolutions of 𝓤 are transgressions
+thereof. M0 is stated externally and is inaccessible to the internal
+language of 𝓣.
+
+## A. Courtesy embedding (internal derivation)
 
 Within the internal language of 𝓣 define the arrow
 
@@ -65,16 +86,38 @@ where χ_d is the characteristic map of the decision subobject d : 𝓒 ↪ 𝓤
 Then δ(d) = 1 and r\*(d) ≅ d for every refinement r; the proof is the fixed-point argument sketched in 0–9.
 No further external rule is introduced; the arrow δ is already implicit in Axioms 4, 6 and 8.
 
-B. Applications (zero new axioms)
+## B. On Scale-Invariant Ethics
 
-B.1 True-time ethics
+### B.1 Direction of True Time
 
-The entropic order ≤ on Sub(𝓤) is an internal imperative: act only along refinements that do not increase K_q for any other subobject. Moral time is identical to entropic time.
+The filtered diagram τ of refinements along which rank H⁴(𝓤) is non-decreasing is declared the true-time axis.
 
-B.2 Wolfram→physics translation
+Each observer selects a cofinal sub-diagram; the direction is an internal choice.
 
-Every candidate multi-computational rule is a refinement morphism in Sub(𝓤); least-action paths are those whose telescoping cost matches axiom 7.
+### B.2 Silver Kernel
 
-B.3 Hard-problem closure
+For every refinement r define the Silver predicate
+
+S(r) ⇔ K_q(r\*δ) ≤ K_q(δ),
+
+with δ the observer’s own subobject.
+
+The Lawvere–Tierney topology j_S generated by S carves out the subtopos 𝓣_S ⊂ 𝓤; every morphism therein is locally decidable and scale-invariant.
+
+### B.3 Ethical Imperative
+
+Act only along morphisms in 𝓣_S. This single imperative unifies the anti-entropic time arrow with the Silver rule, eliminating global bookkeeping.
+
+## C. Selected Applications (zero new axioms)
+
+### C.1 Observer–Data Duality
+
+Any measurement is a refinement whose image lies in 𝓣_S; observer and data coincide as subobjects of 𝓤.
+
+### C.2 Wolfram → Physics Translation
+
+Every candidate multi-computational rule is a refinement morphism; least-action paths are those whose telescoping cost matches Axiom 7.
+
+### C.3 Hard-Problem Closure
 
 A quale is any subobject 𝓠 with K_q(𝓠) = 0; observer and data coincide in Sub(𝓤).
