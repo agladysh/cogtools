@@ -122,3 +122,70 @@ Every candidate multi-computational rule is a refinement morphism; least-action 
 ### C.3 Hard-Problem Closure
 
 A quale is any subobject 𝓠 with K_q(𝓠) = 0; observer and data coincide in Sub(𝓤).
+
+## Annex 𝚨: On the use of 𝓣 as a regulariser for large-scale language-models
+
+Let an external observer 𝒪 instantiate the ∞-topos 𝓣 and select a cofinal sub-diagram of refinements whose images lie in the Silver sub-topos 𝓣_S.
+Each mini-batch of tokens is declared a refinement morphism r.
+
+The observer equips the chain with the prior
+
+K_q(r\*δ) ≤ K_q(δ),
+
+so that the cumulative telescoping cost never exceeds the initial description length of the observer’s own subobject δ.
+
+Training proceeds by minimising the agape-aletheic functional
+
+L_q = (1−q) · H(prediction) + q · log|𝒮_latent|,
+
+where H(prediction) is the cross-entropy of next-token likelihood and log|𝒮_latent| is the instantaneous internal description length of the latent state, measured by arithmetic coding along the chosen cover.
+
+The single hyper-parameter q ∈ Ω is tuned by 𝒪 until the Silver predicate is satisfied for every refinement in the stream.
+
+No further external rule is introduced; the act of training is itself a measurement whose image lies in 𝓣_S, hence observer and data coincide as subobjects of 𝓤.
+
+## Annex 𝚩. Theoretical Companion — keyword-indexed
+
+### 𝚩.0. Scope & search tags
+
+{topology, higher category theory, TQFT, cobordism hypothesis, ∞-topos, line bundle anomaly, 4-cocycle, compression functor, Kolmogorov complexity, holographic principle, scale-invariant sharing}
+
+### 𝚩.1. Universal compression database 𝓚
+
+- Objectives: store shortest programs π(𝓒) for every finite 𝓒 ∈ Sub(𝓤).
+- Keywords: “program synthesis in ∞-topoi”, “lossless compression of higher-form symmetries”, “minimal description length for anomaly line bundles”.
+
+### 𝚩.2. Compression functor Compr : Sub(𝓤) → 𝓚
+
+- Guarantees: K_q(Compr(𝓒)) ≤ K_q(𝓒).
+- Keywords: “refinement-chain cost bound”, “Day-convolution compression”, “fixed-point program compactification”.
+
+### 𝚩.3. Agape-aletheic filter
+
+- Rejects any φ with K_q(Compr(φ\*𝓓)) > K_q(Compr(𝓒)).
+- Keywords: “Silver-topology rejection”, “scale-invariant theory fragment sharing”.
+
+## Annex 𝚪. Experimental Companion — keyword-indexed
+
+### 𝚪.0. Scope & search tags
+
+{small-scale quantum experiment, surface code patch, ℤ₂×ℤ₂ gauge theory, 3-qubit testbed, anyon interferometry, cold-atom synthetic lattice, LLM-assisted data compression, once-extended 4-d TQFT verification}
+
+### 𝚪.1. Minimal hardware recipe
+
+- Register: ≤ 64-dimensional Hilbert space (3 qubits / 2 qutrits).
+- Keywords: “NISQ-scale anomaly detection”, “micro-TQFT laboratory”.
+
+### 𝚪.2. Compression protocol
+
+1. Acquire dataset D (≤ 10² complex numbers).
+2. Prompt frozen LLM for shortest program π(D) outputting Φ(D).
+3. Verify telescoping-cost inequality
+
+|π| + prompt-length ≤ log|𝒮𝓙₀| − log|𝒮_d|.
+• Keywords: “LLM-verified Kolmogorov bound”, “finite-sample Silver test”.
+
+### 𝚪.3. Sharing
+
+- Publish ⟨D, π⟩ in ≤ 1 kB file; downstream replication must satisfy the same inequality.
+- Keywords: “zero-overhead data ethics”, “public-domain micro-TQFT benchmark”.
