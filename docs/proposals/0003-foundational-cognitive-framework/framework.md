@@ -71,10 +71,11 @@ External-rule count: 0.
 
 ## Gödel reflection (meta-parsimonious)
 
-Let M0 assert that 𝓤 is the curvature-obstruction cocycle of a single
-∞-connection on a 5-graded complex; convolutions of 𝓤 are transgressions
-thereof. M0 is stated externally and is inaccessible to the internal
-language of 𝓣.
+Let M0 assert that 𝓤 is the universal anomaly line bundle supplied by the 5-stage cobordism hypothesis for once-extended 4-dimensional TQFT valued in `Sh(𝒩)[β^{±1}]`, β the 2-sphere Bott element; convolutions of 𝓤 are the transgressions of this gerbe along manifolds with corners of co-dimension 2.
+
+This clause is stated externally and is inaccessible to the internal language of 𝓣.
+
+Together with axioms 0–9, M0 pins down the ∞-topos uniquely; relaxing or adding an internal axiom still breaks at least one of F§7, F§8, or F§9.
 
 ## A. Courtesy embedding (internal derivation)
 
