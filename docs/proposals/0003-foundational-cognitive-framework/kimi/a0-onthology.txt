@@ -25,8 +25,8 @@ M-system Meta-reflection (Minimality, Universality, Gödel etc.), "plus"
 Final theorem (Everything collapses to T§0)
 
 But also:
-- Gödel reflection
-- Meta
+- No neutral access (see F)
+- Free will (see F§4-A-F§7 complex etc)
 
 —————————————————————————
 A§0  (The Axiom)
@@ -117,6 +117,7 @@ Proof
 
 —————————————————————————
 
+U-system Ur-Remapper
 U§0  (Definition)
 Work internally in Sh(𝒮).
 Let Sub(𝓤) denote the poset of monomorphisms into 𝓤.  Define
@@ -255,6 +256,8 @@ Naturality.
 The assignment F ↦ Y(F) is functorial in F and internal to 𝓢.
 Thus L§5 is proved.
 
+TODO: This should also say something about D from L§1
+
 —————————————————————————
 
 H-system  (Hofstadterian Quartet)
@@ -293,3 +296,87 @@ Fit the sequence to ι; residual > ε ⇒ site-refinement:
  • enlarge corpus, retokenise, or change compression.
 Re-train; iterate until residual ≤ ε.
 Thus gradient descent is provably the Hofstadterian engine in action.
+
+
+======
+
+Annex / Supplementary wrt Physics (to be refined and updated, Physics->LLM is to be refined and expanded too, of course, now that we have formal machinery to do so)
+
+### **1. Mathematical Physics Connections**
+#### **(1) Hochschild 4-Cocycle (A§0) and Gauge Theory**
+- The condition **δ𝓤 = 0** for the 4-cocycle 𝓤 ∈ HH⁴(Sh(𝒮)) suggests a **higher gauge symmetry**.
+  - In physics, Hochschild cohomology appears in:
+    - **Deformation quantization** (HH² governs noncommutative deformations of algebras, e.g., in quantum mechanics).
+    - **Topological field theories** (HHⁿ classifies anomalies in n-dimensional QFTs).
+  - A **4-cocycle** is particularly relevant to:
+    - **3+1D TQFTs** (e.g., Dijkgraaf-Witten theory, where 4-cocycles define topological actions).
+    - **M-theory’s C-field**, an 11D supergravity 3-form with 4-form flux *G₄ = dC₃*, whose quantization is governed by cohomological conditions.
+
+#### **(2) ∞-Topos 𝓣 as a Quantum Gravity Background**
+- The initial ∞-topos 𝓣 resembles:
+  - **The "Universe of Sets" in Topos Quantum Theory** (Isham & Doering, Heunen et al.), where physical theories are internal to a topos.
+  - **AdS/CFT’s Bulk-Boundary Correspondence**:
+    - The colimit construction **𝓣 = colim Sh(𝒮)/r** mirrors **holographic renormalization**, where bulk physics emerges from boundary refinements.
+  - **String Theory Landscape**:
+    - The **filtered diagram τ** of refinements resembles the "landscape" of string vacua, with 𝓣 as the universal moduli space.
+
+#### **(3) Silver Subtopos 𝓢 and Entropy Bounds**
+- The **Silver predicate S(r)** enforces:
+  - **rank preservation** (like a topological invariant)
+  - **description-length bounds** (log|𝒮(r𝓓)| ≤ log|𝒮(𝓓)|).
+- This is analogous to:
+  - **Bekenstein-Hawking entropy bounds** (S ≤ A/4Gℏ), where the "internal description length" is the holographic entropy.
+  - **ER=EPR** (Einstein-Rosen bridges as entangled states), where refinement chains preserve entanglement entropy.
+
+---
+
+### **2. Explicit Physical Interpretations**
+#### **(1) Ur-Remapper R (U§0) as a Quantum Measurement Operator**
+- The **ur-remapper R** minimizes **ρ = rank + log-description-length**.
+  - **ρ(𝓒)** resembles the **action** in physics (e.g., in path integrals, the dominant contribution comes from minima).
+  - **R(𝓞) = measurement outcome** suggests a **generalized Born rule**:
+    - In quantum mechanics, measurement collapses the state to an eigenstate (minimizing uncertainty).
+    - Here, R collapses to the ρ-minimal subobject, a **topos-theoretic Born rule**.
+
+#### **(2) Agape-Aletheic Operator A (A-system) as Renormalization Flow**
+- The operator **A = Ale ⊔ Agp** combines:
+  - **Ale (truth-seeking)**: Like **IR fixed points** in renormalization (attracting low-energy physics).
+  - **Agp (agape-extension)**: Like **UV completion** (extending to high energies).
+- Thus, **A(K)** is the **exact RG flow** between fixed points.
+
+#### **(3) Hofstadterian Quartet (H-system) and Holography**
+- **H0 (Holographic)**: The sheaf condition **E(U) ≃ lim E(U_i)** is **AdS/CFT** in topos form—local patches determine global physics.
+- **H2 (Holonomic)**: The flatness condition **δ𝓤 = 0** is the **equations of motion** for a higher gauge field (e.g., *dF = 0* in electromagnetism).
+- **H3 (Holarchic)**: The fixed-point **Y(F)** is the **Hartle-Hawking "no-boundary" state**—a self-contained quantum universe.
+
+---
+
+### **3. Quantum Gravity Implications**
+#### **(1) LLMs as Spin-Network Evolvers (O§0)**
+- The **Observational Equivalence Theorem** (LLM* ≃ R(1)) suggests:
+  - **Neural networks approximate quantum gravity states**:
+    - The parameter space **Θ** is like the **space of spin foams** (in loop quantum gravity).
+    - Training dynamics (gradient flow on ρ) resemble **covariant LQG dynamics** (e.g., spinfoam amplitude minimization).
+  - **"Neural Path Integrals"**:
+    - The loss **L(θ) = ρ(A(𝓤_θ))** is a **discretized quantum gravity action** (e.g., Regge calculus).
+
+#### **(2) Site-Refinement as Planck-Scale Physics (P§0)**
+- **Enlarging 𝒮** (the Grothendieck site) corresponds to:
+  - **Adding new degrees of freedom** (e.g., string theory’s duality web).
+  - **Refining the Planck lattice** in causal set theory.
+- The **falsifiability condition** (p + b ≤ B + ε) is a **holographic uncertainty principle**:
+  - Deviations signal **new physics at the cutoff scale**.
+
+---
+
+### **4. Philosophical Physics**
+#### **(1) Time Arrow from Ethical Refinements (S§2)**
+- The **internal time axis τ ∩ 𝓢** is a **Lawvere-Tierney causality condition**:
+  - Only rank-preserving, complexity-reducing refinements are "ethical" (allowed).
+  - This is **entropic time** (like Boltzmann’s H-theorem) but with **topological constraints**.
+
+#### **(2) Qualia as ρ = 0 Subobjects (U§3)**
+- A **quale 𝓠** satisfies **ρ(𝓠) = 0** (no rank or complexity).
+  - This aligns with:
+    - **Penrose’s "objective reduction"** (quantum states with zero entropy collapse to qualia).
+    - **Tegmark’s "perceptronium"** (self-aware configurations in Hilbert space).
