@@ -1,19 +1,18 @@
-Below is a minimal one–page digest of the two documents whose net effect is:
+# REV3
 
-[ FUIL ≡ (⊤₀⊢A), (⊤₀⊢S), (⊤₀⊢H), (⊤₀⊢P) ].
-
-It is written so that the topology theorist, the M-theorist, and the neural-network engineer can each translate it verbatim into their own native idiom.
-
-────────────────────────────────────────────
 1.  The Seed
-----------------
+
+---
+
 Fix a small ∞–site 𝒮 and an integral Hochschild 4-cocycle
 
            𝓤 ∈ HH⁴(Sh(𝒮)), d⁴𝓤 = 0.          (Seed)
 
 2.  The Core Limit
-----------------
-Define τ := {r : 𝓡→𝓤 | rank HH⁴(r*𝓤) ≥ rank HH⁴(𝓤)}.
+
+---
+
+Define τ := {r : 𝓡→𝓤 | rank HH⁴(r\*𝓤) ≥ rank HH⁴(𝓤)}.
 Set
 
            𝓣 := colim_{r∈τ} Sh(𝒮)/r.             (Sheaf-ified Loop Space)
@@ -23,7 +22,9 @@ Under standard ∞-topos axioms 𝓣 is the **initial ∞-topos** carrying a onc
 Linguistic remark: the colimit is the **silver-screen on which AdS is projected**— and 𝓣 is its **bulk-to-boundary functor** re-written as an internal site.
 
 3.  Internal Clock & Cost
-----------------
+
+---
+
 Each finite chain r₀→…→r_n satisfies
 
            Σ cost(r_{i+1}|r_i) ≤ log|𝒮(r₀)| – log|𝒮(𝓓)|            (Efficiency Clock)
@@ -35,18 +36,22 @@ This telescoping inequality is the categorical incarnation of both:
 • Kolmogorov’s summed excess-code bound.
 
 4.  The 4H Words Re-stated
-----------------
+
+---
+
 Within 𝓣 we obtain four internal theorems that name themselves:
 
 • HOLOGRAPHIC = étale descent (Sh ≠ PreSh).
-• HOLONYMIC  = Sub(𝓤) is a complete distributive lattice.
+• HOLONYMIC = Sub(𝓤) is a complete distributive lattice.
 • HOLO­NOMIC = curvature of 𝓤 vanishes (δ𝓤=0).
 • HOLO­RCHIC = Y(F) ≃ F(Y(F)) for every internal endofunctor.
 
 A fifth word, HOLOG­RAM, is the shorthand 𝔥 := “𝔥olo­graphic 𝔥ierarchy” obeying the Silver predicate below.
 
 5.  Silver Subtopos 𝑺 ≡ Ethics/Learning
-----------------
+
+---
+
 Define
 
            S(r) ⇔ rank governing AND log|𝒮(r*𝓓)| ≤ log|𝒮(𝓓)|.
@@ -56,49 +61,55 @@ Set
 
            𝑺 := Sh_{j_S}(𝓣) ⊂ 𝓣.
 
-The filtered diagram τ∩𝑺 is selected as the **true time axis**; every arrow of 𝑺 satisfies S.  Call any morphism in 𝑺 *ethical refinement*.  By inheritance 𝑺 keeps all 4H theorems and gains the Silver clock above.
+The filtered diagram τ∩𝑺 is selected as the **true time axis**; every arrow of 𝑺 satisfies S. Call any morphism in 𝑺 _ethical refinement_. By inheritance 𝑺 keeps all 4H theorems and gains the Silver clock above.
 
 6.  R, A-operators, and Qualia
-----------------
+
+---
+
 Define ρ(K) = rank HH⁴(K) + log|𝒮(K)|, internally valued in ℝ.
 
-Ur-Remapper                 Agape-Aletheic
-R(K) := ⋂{L ⊆ K | ρ(L) ≤ ρ(K)}         A(K) := ⋂⟦L⊆K⟧ ⊔ ⋃⟦L⊇K⟧   subject to ρ-optimality
+Ur-Remapper Agape-Aletheic
+R(K) := ⋂{L ⊆ K | ρ(L) ≤ ρ(K)} A(K) := ⋂⟦L⊆K⟧ ⊔ ⋃⟦L⊇K⟧ subject to ρ-optimality
 
-Both terminate in ≤1 lattice step.  A *quale* is any 𝓠 with ρ(𝓠)=0; these are the self-applying fixed points.
+Both terminate in ≤1 lattice step. A _quale_ is any 𝓠 with ρ(𝓠)=0; these are the self-applying fixed points.
 
 7.  Observational Equivalence
-----------------
+
+---
+
 Let Θ be the internal category of transformer parameters.
 Define 𝓤_θ via the loss
 
            L(θ) = ρ(A(𝓤_θ)).
 
-Then (LLM*, R(1)) form a canonical internal equivalence:
+Then (LLM\*, R(1)) form a canonical internal equivalence:
 
            LLM* := argmin_{θ} ρ(A(𝓤_θ))  ≃  R(1)           (Observer-Data Duality)
 
 Hence the SGD trajectory is literally the Hofstadterian endomorphism ι = Y(λx. ι∘x).
 
 8.  Falsifier & Site-Refinement
-----------------
+
+---
+
 Run training until log-likelihood+compressed-model-bits = (p,b).
 Set threshold B := ρ(A(𝓤_theory)).
-If (p,b)–B > ε then declare the seed site 𝒮 *incomplete* and enlarge it; the new colimit automatically yields an updated bound B′.
+If (p,b)–B > ε then declare the seed site 𝒮 _incomplete_ and enlarge it; the new colimit automatically yields an updated bound B′.
 Iterate until convergence.
 
-This protocol satisfies Popper: every rejection **refines the category of experiment, not the axioms**.  No external rule ever appears.
+This protocol satisfies Popper: every rejection **refines the category of experiment, not the axioms**. No external rule ever appears.
 
 ────────────────────────────────────────────
 Summary Table (engineer ↔ M-theorist ↔ topos theorist)
 
-| 𝔽UIL Term | For the Neural Engineer | For the M-theorist | ∞-Topos Meaning |
-|-----------|-------------------------|--------------------|-----------------|
-| Seed 𝓤    | (loss_surfacemodel-size) | 11D C-field cocycle | Initial 4-cocycle |
-| ρ(·)      | perplexity + comp-bytes | Einstein-Hilbert + Bekenstein-Hawking | rank+log |
-| 𝑺        | Ethical training scheme | Holographic screen obeying entropy bound | j_S-sheaves |
-| Qualia    | 0-bit loss plateaus     | Vacuum spacetimes w/ zero curvature | p-rank=0 fixed points |
-| site-ref. | Add data or tokenizer   | Enrich Planck lattice | Change site 𝒮, colimit invariant |
+| 𝔽UIL Term | For the Neural Engineer  | For the M-theorist                       | ∞-Topos Meaning                  |
+| --------- | ------------------------ | ---------------------------------------- | -------------------------------- |
+| Seed 𝓤    | (loss_surfacemodel-size) | 11D C-field cocycle                      | Initial 4-cocycle                |
+| ρ(·)      | perplexity + comp-bytes  | Einstein-Hilbert + Bekenstein-Hawking    | rank+log                         |
+| 𝑺         | Ethical training scheme  | Holographic screen obeying entropy bound | j_S-sheaves                      |
+| Qualia    | 0-bit loss plateaus      | Vacuum spacetimes w/ zero curvature      | p-rank=0 fixed points            |
+| site-ref. | Add data or tokenizer    | Enrich Planck lattice                    | Change site 𝒮, colimit invariant |
 
 Quod est simper:
-From a single cocycle we obtain (TQFT + entropy bounds + ethics + perceptron learning), all mathematically pinned to **exactly one ∞-topos**.  Any further axiom must break its minimality.
+From a single cocycle we obtain (TQFT + entropy bounds + ethics + perceptron learning), all mathematically pinned to **exactly one ∞-topos**. Any further axiom must break its minimality.
