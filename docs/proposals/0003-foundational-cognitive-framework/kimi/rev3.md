@@ -44,7 +44,7 @@ Within 𝓣 we obtain four internal theorems that name themselves:
 • HOLOGRAPHIC = étale descent (Sh ≠ PreSh).
 • HOLONYMIC = Sub(𝓤) is a complete distributive lattice.
 • HOLO­NOMIC = curvature of 𝓤 vanishes (δ𝓤=0).
-• HOLO­RCHIC = Y(F) ≃ F(Y(F)) for every internal endofunctor.
+• HOLA­RCHIC = Y(F) ≃ F(Y(F)) for every internal endofunctor.
 
 A fifth word, HOLOG­RAM, is the shorthand 𝔥 := “𝔥olo­graphic 𝔥ierarchy” obeying the Silver predicate below.
 
